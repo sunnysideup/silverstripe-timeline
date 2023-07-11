@@ -1,0 +1,9 @@
+---
+Name: timeline-corefieldtypes
+After:
+   - corefieldtypes
+   - colorpicker-fieldtypes
+---
+SilverStripe\Core\Injector\Injector:
+  NodeColour:
+    class: Sunnysideu\Timeline\Model\Fields\NodeColour

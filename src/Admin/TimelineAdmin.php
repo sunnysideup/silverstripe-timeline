@@ -2,13 +2,13 @@
 
 namespace Sunnysideup\Timeline\Admin;
 
-use Sunnysideup\Timeline\Model\TimelineFullEntry;
+use Sunnysideup\Timeline\Model\TimelineEntry;
 use SilverStripe\Admin\ModelAdmin;
 
 class TimelineAdmin extends ModelAdmin
 {
     private static $managed_models = [
-        TimelineFullEntry::class,
+        TimelineEntry::class,
     ];
     private static $url_segment = 'timeline';
     private static $menu_title = 'Time Line';

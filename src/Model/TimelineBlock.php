@@ -4,7 +4,7 @@ namespace Sunnysideup\Timeline\Model;
 if(class_exists('DNADesign\Elemental\Models\BaseElement')) {
 
     use DNADesign\Elemental\Models\BaseElement;
-    use Sunnysideup\Timeline\Model\TimelineFullEntry;
+    use Sunnysideup\Timeline\Model\TimelineEntry;
     use SilverStripe\Forms\TextField;
 
     class TimelineBlock extends BaseElement
@@ -20,7 +20,7 @@ if(class_exists('DNADesign\Elemental\Models\BaseElement')) {
         private static $icon = 'font-icon-clock';
 
         private static $has_many = [
-            'TimelineEntries' => TimelineFullEntry::class,
+            'TimelineEntries' => TimelineEntry::class,
         ];
 
         private static $default_values = [

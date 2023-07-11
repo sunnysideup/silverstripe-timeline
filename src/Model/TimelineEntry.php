@@ -5,7 +5,7 @@ namespace Sunnysideup\Timeline\Model;
 use Sunnysideup\Timeline\Admin\TimelineAdmin;
 use Sunnysideup\Timeline\Blocks\TimelineBlock;
 use Sunnysideup\Timeline\Model\CarouselItem;
-use Sunnysideup\Timeline\Model\Fields\MyNodeColour;
+use Sunnysideup\Timeline\Model\Fields\NodeColour;
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Core\Injector\Injector;
@@ -14,11 +14,16 @@ use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
+use Sunnysideu\Timeline\Model\CarouselItems\BlogPostCarouselItem;
+use Sunnysideu\Timeline\Model\CarouselItems\GalleryCarouselItem;
+use Sunnysideu\Timeline\Model\CarouselItems\RelatedDocumentsCarouselItem;
+use Sunnysideup\Timeline\Model\CarouselItems\ImageCarouselItem;
+use Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
 
-class TimelineFullEntry extends DataObject
+class TimelineEntry extends DataObject
 {
     //######################
     //## Names Section
@@ -35,15 +40,18 @@ class TimelineFullEntry extends DataObject
         'Title' => 'Varchar',
         'EntryType' => 'Enum("Read more, Carousel", "Carousel")',
         'Position' => 'Enum("Left, Right", "Right")',
-        'NodeColour' => MyNodeColour::class,
+        'NodeColour' => NodeColour::class,
     ];
+
     private static $has_one = [
         'TimelineBlock' => TimelineBlock::class,
         'ReadMoreLink' => Link::class,
     ];
+
     private static $has_many = [
         'CarouselItems' => CarouselItem::class,
     ];
+
     //######################
     //## Further DB Field Details
     //######################
@@ -53,6 +61,7 @@ class TimelineFullEntry extends DataObject
     private static $indexes = [
         'DateForOrdering' => true,    // for sortable gridfield
     ];
+
     private static $default_sort = [
         'DateForOrdering' => 'DESC',
     ];
@@ -94,11 +103,11 @@ class TimelineFullEntry extends DataObject
         $gridField = GridField::create('CarouselItems', 'Carousel Items', $this->CarouselItems());
         $gridFieldAddNewMultiClass = new GridFieldAddNewMultiClass();
         $subClasses = [
-            'Sunnysideup\Timeline\Model\SummaryCarouselItem',
-            'Sunnysideup\Timeline\Model\ImageCarouselItem',
-            'Sunnysideup\Timeline\Model\GalleryCarouselItem',
-            'Sunnysideup\Timeline\Model\BlogPostCarouselItem',
-            'Sunnysideup\Timeline\Model\RelatedDocumentsCarouselItem',
+            SummaryCarouselItem::class,
+            ImageCarouselItem::class,
+            GalleryCarouselItem::class,
+            BlogPostCarouselItem::class,
+            RelatedDocumentsCarouselItem::class,
         ];
         $config = GridFieldConfig_RecordEditor::create()
             ->removeComponentsByType(GridFieldAddNewButton::class)
@@ -108,7 +117,7 @@ class TimelineFullEntry extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                MyNodeColour::get_dropdown_field('NodeColour', 'Node Colour')->displayIf('EntryType')->isEqualTo('Carousel')->end(),
+                NodeColour::get_dropdown_field('NodeColour', 'Node Colour')->displayIf('EntryType')->isEqualTo('Carousel')->end(),
                 LinkField::create('ReadMoreLinkID', 'Read More Link')->hideUnless('EntryType')->isEqualTo('Read more')->end(),
             ]
         );

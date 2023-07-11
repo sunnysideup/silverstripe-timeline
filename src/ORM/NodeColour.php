@@ -2,7 +2,7 @@
 namespace Sunnysideup\Timeline\Model\Fields;
 use Sunnysideup\Timeline\Forms\ColourSelector;
 use SilverStripe\Forms\DropdownField;
-class MyNodeColour extends MyColour
+class NodeColour extends MyColour
 {
     /**
      * @var array<string, string>

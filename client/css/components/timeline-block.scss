@@ -1,7 +1,7 @@
-.element-holder__riverlink__website__blocks__timelinefullblock {
+.element-holder__sunnysideup__timeline__blocks__timelineblock {
   overflow: hidden;
 }
-.timeline-full-block__entries {
+.timeline-block__entries {
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -208,7 +208,7 @@
   &::-webkit-details-marker,
   &::marker {
     color: transparent;
-    display:none;
+    display: none;
   }
 }
 .timeline-entry__carousel {

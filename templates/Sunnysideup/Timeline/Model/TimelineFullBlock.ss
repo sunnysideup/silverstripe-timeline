@@ -1,7 +1,7 @@
 <% if $TimelineEntries %>
-    <div class="timeline-full-block__wrapper">
-        <div class="timeline-full-block">
-            <div class="timeline-full-block__entries">
+    <div class="timeline-block__wrapper">
+        <div class="timeline-block">
+            <div class="timeline-block__entries">
                 <% loop $TimelineEntries %>
                 <div class="timeline-entry timeline-entry--{$EntryPosition} timeline-entry--{$EntryType} timeline-entry--{$NodeColour} timeline-entry--{$EntryTense}">
                     <% if $EntryType == 'carousel' %>
