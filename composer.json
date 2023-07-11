@@ -8,6 +8,7 @@
     "Silverstripe",
     "timeline",
     "visual communication",
+    "chronology",
     "history"
   ],
   "license": "BSD-3-Clause",
@@ -20,11 +21,18 @@
   ],
   "require": {
     "silverstripe/framework": "^4.0 || ^5.0",
+    "sunnysideup/perfect_cms_images": "dev-master",
     "sheadawson/silverstripe-linkable": "*"
   },
   "autoload": {
     "psr-4": {
       "Sunnysideup\\Timeline\\": "src/"
     }
-  }
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/jamesLiAKQA/silverstripe-linkable.git"
+    }
+  ]
 }
