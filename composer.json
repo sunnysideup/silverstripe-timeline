@@ -22,7 +22,8 @@
   "require": {
     "silverstripe/framework": "^4.0 || ^5.0",
     "sunnysideup/perfect_cms_images": "dev-master",
-    "sheadawson/silverstripe-linkable": "*"
+    "sheadawson/silverstripe-linkable": "*",
+    "symbiote/silverstripe-gridfieldextensions": "3.x-dev"
   },
   "autoload": {
     "psr-4": {
@@ -33,6 +34,10 @@
     {
       "type": "vcs",
       "url": "https://github.com/jamesLiAKQA/silverstripe-linkable.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/sunnysideup/silverstripe-gridfieldextensions.git"
     }
   ]
 }
