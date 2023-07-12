@@ -3,10 +3,10 @@
 
 namespace Sunnysideup\Timeline\Model\CarouselItems;
 
-namespace Sunnysideu\Timeline\Model;
+namespace Sunnysideup\Timeline\Model;
 
-use Sunnysideu\Timeline\Model\CarouselItem;
-use Sunnysideu\Timeline\Model\CarouselRelatedDocument;
+use Sunnysideup\Timeline\Model\CarouselItem;
+use Sunnysideup\Timeline\Model\CarouselRelatedDocument;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\LiteralField;

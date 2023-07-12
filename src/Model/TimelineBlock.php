@@ -1,11 +1,12 @@
 <?php
+
 namespace Sunnysideup\Timeline\Model;
+
+use DNADesign\Elemental\Models\BaseElement;
+use Sunnysideup\Timeline\Model\TimelineEntry;
 
 if(class_exists('DNADesign\Elemental\Models\BaseElement')) {
 
-    use DNADesign\Elemental\Models\BaseElement;
-    use Sunnysideup\Timeline\Model\TimelineEntry;
-    use SilverStripe\Forms\TextField;
 
     class TimelineBlock extends BaseElement
     {

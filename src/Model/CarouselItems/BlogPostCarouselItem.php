@@ -1,9 +1,9 @@
 <?php
 
-namespace Sunnysideu\Timeline\Model\CarouselItems;
+namespace Sunnysideup\Timeline\Model\CarouselItem;
 
-use Sunnysideu\Timeline\Model\BlogPost;
-use Sunnysideu\Timeline\Model\CarouselItem;
+use Sunnysideup\Timeline\Model\BlogPost;
+use Sunnysideup\Timeline\Model\CarouselItem;
 use SilverStripe\Forms\DropdownField;
 
 class BlogPostCarouselItem extends CarouselItem

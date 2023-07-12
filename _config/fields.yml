@@ -6,4 +6,4 @@ After:
 ---
 SilverStripe\Core\Injector\Injector:
   NodeColour:
-    class: Sunnysideu\Timeline\Model\Fields\NodeColour
+    class: Sunnysideup\Timeline\Model\Fields\NodeColour

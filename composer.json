@@ -31,6 +31,12 @@
       "Sunnysideup\\Timeline\\": "src/"
     }
   },
+  "extra": {
+    "installer-name": "sortablegridfield",
+    "expose": [
+      "client"
+    ]
+  },
   "repositories": [
     {
       "type": "vcs",

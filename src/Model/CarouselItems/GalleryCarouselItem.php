@@ -1,9 +1,9 @@
 <?php
 
-namespace Sunnysideu\Timeline\Model\CarouselItems;
+namespace Sunnysideup\Timeline\Model\CarouselItems;
 
-use Sunnysideu\Timeline\Model\CarouselItem;
-use Sunnysideu\Timeline\Model\CarouselGalleryImage;
+use Sunnysideup\Timeline\Model\CarouselItem;
+use Sunnysideup\Timeline\Model\CarouselGalleryImage;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\LiteralField;

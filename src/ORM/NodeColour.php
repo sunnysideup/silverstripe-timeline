@@ -1,9 +1,21 @@
 <?php
+
 namespace Sunnysideup\Timeline\Model\Fields;
+
 use Sunnysideup\Timeline\Forms\ColourSelector;
 use SilverStripe\Forms\DropdownField;
+
 class NodeColour extends MyColour
 {
+    private static $casting = [
+        'CssClass' => 'Varchar',
+    ];
+
+    public function CssClass()
+    {
+        return $this->getCssClass();
+    }
+
     /**
      * @var array<string, string>
      */
