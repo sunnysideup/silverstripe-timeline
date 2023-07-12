@@ -1,6 +1,6 @@
 <?php
 
-namespace Sunnysideup\Timeline\Model;
+namespace Sunnysideup\Timeline\Model\CarouselItems\SubItems;
 
 use Sunnysideup\Timeline\Model\CarouselItems\RelatedDocumentsCarouselItem;
 use Sheadawson\Linkable\Forms\LinkField;

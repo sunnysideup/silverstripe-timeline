@@ -19,7 +19,7 @@ class SummaryCarouselItem extends CarouselItem
     ];
     private static $has_one = [
         'Icon' => Image::class,
-        'ProjectLink' => Link::class,
+        'MoreInformation' => Link::class,
     ];
     private static $owns = [
         'Icon',
@@ -31,7 +31,7 @@ class SummaryCarouselItem extends CarouselItem
             'Root.Main',
             [
                 PerfectCmsImagesUploadField::create('Icon', 'Summary Icon', null, 'CarouselSummaryIcon'),
-                LinkField::create('ProjectLinkID', 'Project Page Link'),
+                LinkField::create('MoreInformationID', 'More information link'),
             ]
         );
         return $fields;

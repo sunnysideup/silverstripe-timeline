@@ -56,7 +56,7 @@ class CarouselItem extends DataObject
     }
     public function forTemplate()
     {
-        return $this->renderWith('Sunnysideup/Timeline/Model/' . substr(strrchr(get_class($this), '\\'), 1));
+        return $this->renderWith(str_replace('\\', '/', get_class($this)));
     }
 
     public function getAvailableTypes(): array
