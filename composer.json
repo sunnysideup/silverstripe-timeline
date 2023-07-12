@@ -25,11 +25,7 @@
     "sheadawson/silverstripe-linkable": "*",
     "unclecheese/display-logic": "^3.0",
     "symbiote/silverstripe-gridfieldextensions": "3.x-dev",
-<<<<<<< HEAD
     "tractorcow/silverstripe-colorpicker": "^4.2"
-=======
-    "tractorcow/silverstripe-colorpicker":
->>>>>>> 43a665163639e308feccc54e9c39e34e0d44b5fc
   },
   "autoload": {
     "psr-4": {
