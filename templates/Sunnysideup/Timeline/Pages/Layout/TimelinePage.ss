@@ -1,6 +1,15 @@
-    <h1>$Title</h1>
+<header>
+    <h1 class="restricted-width-container">$Title</h1>
+</header>
 
-    <div class="content">$Content</div>
+<aside>
+    <div class="restricted-width-container">
+        $Content
+    </div>
+</aside>
 
-    <% include Sunnysideup\Timeline\Model\TimelineBlock %>
-
+<main>
+    <div class="restricted-width-container">
+        <% include Sunnysideup\Timeline\Model\TimelineBlock %>
+    </div>
+</main>
