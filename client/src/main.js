@@ -1,4 +1,4 @@
-import TimelineBlock from './components/timeline-block'
+import TimelineBlock from './javascript/components/timeline-block'
 
 const $window = $(window)
 const $document = $(document)

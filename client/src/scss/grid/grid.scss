@@ -1,0 +1,38 @@
+$grid-breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1400px
+) !default;
+
+$container-max-widths: (
+  sm: 540px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1320px
+) !default;
+
+$grid-columns: 12 !default;
+$grid-gutter-width: 30px !default;
+
+@mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+  $min: map-get($breakpoints, $name);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@mixin line-height-calc($font-size, $line-height) {
+  line-height: 1 / $font-size * $line-height;
+}
+
+@mixin line-height-calc-margin($font-size, $line-height) {
+  margin-top: (1 / $font-size * $line-height) - 1em;
+}

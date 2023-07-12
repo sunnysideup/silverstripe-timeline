@@ -35,7 +35,7 @@
     bottom: 50%;
   }
   &::after {
-    background-color: $colour_white;
+    background-color: var(--color-white);
     top: 50%;
   }
   ~ .timeline-entry--past {
@@ -100,7 +100,7 @@
 .timeline-entry__swipe {
   display: flex;
   justify-content: flex-end;
-  margin-right: $grid-gutter-width / 2;
+  margin-right: calc(var(--grid-gutter-width) / 2);
   @include media-breakpoint-up(sm) {
     display: none;
   }
@@ -109,7 +109,7 @@
     display: flex;
     font-size: 1.8rem;
     &::after {
-      background-color: $colour_dark_blue_100;
+      background-color: var(--color-dark);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='icon icon-tabler icon-tabler-arrow-narrow-right' width='24' height='24' stroke-width='2.5' stroke='%23fff' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 0h24v24H0z' stroke='none'/%3E%3Cpath d='M5 12h14M15 16l4-4M15 8l4 4'/%3E%3C/svg%3E");
       background-position: 50% 50%;
       background-repeat: no-repeat;
@@ -124,7 +124,7 @@
 .timeline-entry__read-more-link {
   display: inline-block;
   font-size: 1.8rem;
-  font-weight: $font-weight-bold;
+  font-weight: bold;
   @include line-height-calc(18, 23);
   margin-top: 4px;
   @include media-breakpoint-up(md) {
@@ -133,8 +133,8 @@
   }
 }
 .timeline-entry__detail {
-  background-color: $colour_white;
-  color: $colour_dark_blue_100;
+  background-color: var(--color-white);
+  color: var(--color-dark);
   &[open] {
     position: relative;
     z-index: 1;
@@ -152,16 +152,16 @@
 }
 .timeline-entry__detail-inner {
   box-sizing: border-box;
-  padding: $grid-gutter-width 0 0;
+  padding: var(--grid-gutter-width) 0 0;
   @include media-breakpoint-up(sm) {
-    padding-bottom: $grid-gutter-width * 3;
+    padding-bottom: calc( var(--grid-gutter-width) * 3);
   }
 }
 .timeline-entry__node {
-  background-color: $colour_white;
+  background-color: var(--color-white);
   border-radius: 50%;
   height: 36px;
-  left: $grid-gutter-width / 2 + 7;
+  left: calc(( var(--grid-gutter-width) / 2 ) + 7);
   position: absolute;
   top: calc(50% - 18px);
   width: 36px;
@@ -175,15 +175,15 @@
   }
 }
 .timeline-entry__node--carousel {
-  background-color: $colour_dark_blue_100;
+  background-color: var(--color-dark);
   background-image: url("data:image/svg+xml,%3Csvg width='17' height='25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m3.429 3.429 9.285 9.285L3.43 22' stroke='%23fff' stroke-width='5.943' stroke-linecap='round'/%3E%3C/svg%3E");
   background-position: 55% 50%;
   background-repeat: no-repeat;
-  border: 5px solid $colour_white;
+  border: 5px solid var(--color-white);
   border-radius: 50%;
   box-sizing: border-box;
   height: 50px;
-  left: $grid-gutter-width / 2;
+  left: calc( var(--grid-gutter-width) / 2 );
   top: calc(50% - 25px);
   transform: rotate(0);
   transition: transform 0.5s;
@@ -197,13 +197,13 @@
     width: 70px;
   }
   .timeline-entry--green-100 & {
-    background-color: $colour_green_100;
+    background-color: var(--color-medium2);
   }
   .timeline-entry--light-blue-100 & {
-    background-color: $colour_light_blue_100;
+    background-color: var(--color-light);
   }
   .timeline-entry--teal-100 & {
-    background-color: $colour_teal_100;
+    background-color: var(--color-medium);
   }
   &::-webkit-details-marker,
   &::marker {
@@ -213,13 +213,13 @@
 }
 .timeline-entry__carousel {
   display: flex;
-  gap: $grid-gutter-width / 2;
+  gap: cal( var(--grid-gutter-width) / 2);
   margin: 10px 0;
   overflow-x: scroll;
   @include media-breakpoint-up(sm) {
     padding-bottom: 50px;
   }
   @include media-breakpoint-up(md) {
-    margin: 45px $grid-gutter-width / 2;
+    margin: 45px calc( var(--grid-gutter-width) / 2);
   }
 }
