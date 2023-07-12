@@ -1,9 +1,6 @@
-
 <?php
 
 namespace Sunnysideup\Timeline\Model\CarouselItems;
-
-namespace Sunnysideup\Timeline\Model;
 
 use Sunnysideup\Timeline\Model\CarouselItem;
 use Sunnysideup\Timeline\Model\CarouselRelatedDocument;

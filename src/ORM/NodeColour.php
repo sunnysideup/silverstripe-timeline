@@ -4,8 +4,9 @@ namespace Sunnysideup\Timeline\Model\Fields;
 
 use Sunnysideup\Timeline\Forms\ColourSelector;
 use SilverStripe\Forms\DropdownField;
+use TractorCow\Colorpicker\Color;
 
-class NodeColour extends MyColour
+class NodeColour extends Color
 {
     private static $casting = [
         'CssClass' => 'Varchar',
