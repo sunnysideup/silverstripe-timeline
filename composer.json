@@ -24,7 +24,8 @@
     "sunnysideup/perfect_cms_images": "dev-master",
     "sheadawson/silverstripe-linkable": "*",
     "unclecheese/display-logic": "^3.0",
-    "symbiote/silverstripe-gridfieldextensions": "3.x-dev"
+    "symbiote/silverstripe-gridfieldextensions": "3.x-dev",
+    "tractorcow/silverstripe-colorpicker":
   },
   "autoload": {
     "psr-4": {
