@@ -13,33 +13,37 @@ Sunnysideup\PerfectCmsImages\Model\File\PerfectCmsImageDataExtension:
  perfect_cms_images_image_definitions:
 
   CarouselSummaryIcon:
-      enforce_size: false
-      folder: carousel-summary-icons
-      use_retina: true
-      crop: false
-      filetype: "SVG (e.g. MyIcon.svg) files would be best here, with a transparent background. It is reccomended to use icons no taller than 200px."
-    CarouselImageImage:
-      width: 400
-      enforce_size: false
-      folder: carousel-image-images
-      use_retina: true
-      crop: false
-      filetype: "JPG (e.g. MyIcon.jpg) files would be best here, in a portrait format (taller than wide)."
-    CarouselGalleryTileImage:
-      width: 400
-      enforce_size: false
-      folder: carousel-gallery-tile-images
-      use_retina: true
-      crop: false
-      filetype: "JPG (e.g. MyIcon.jpg) files would be best here. The image should be roughly square."
-    CarouselGalleryFullImage:
-      enforce_size: false
-      folder: carousel-gallery-full-images
-      use_retina: true
-      filetype: "JPG (e.g. MyIcon.jpg) files would be best here. This is the full size version of the Tile Image."
-    CarouselRelatedDocumentIcon:
-      enforce_size: false
-      folder: carousel-related-documents-icons
-      use_retina: true
-      crop: false
-      filetype: "SVG (e.g. MyIcon.svg) files would be best here, with a transparent background. It is reccomended to use square icons no bigger than 70px."
+    enforce_size: false
+    folder: carousel-summary-icons
+    use_retina: true
+    crop: false
+    filetype: "SVG (e.g. MyIcon.svg) files would be best here, with a transparent background. It is reccomended to use icons no taller than 200px."
+
+  CarouselImageImage:
+    width: 400
+    enforce_size: false
+    folder: carousel-image-images
+    use_retina: true
+    crop: false
+    filetype: "JPG (e.g. MyIcon.jpg) files would be best here, in a portrait format (taller than wide)."
+
+  CarouselGalleryTileImage:
+    width: 400
+    enforce_size: false
+    folder: carousel-gallery-tile-images
+    use_retina: true
+    crop: false
+    filetype: "JPG (e.g. MyIcon.jpg) files would be best here. The image should be roughly square."
+
+  CarouselGalleryFullImage:
+    enforce_size: false
+    folder: carousel-gallery-full-images
+    use_retina: true
+    filetype: "JPG (e.g. MyIcon.jpg) files would be best here. This is the full size version of the Tile Image."
+
+  CarouselRelatedDocumentIcon:
+    enforce_size: false
+    folder: carousel-related-documents-icons
+    use_retina: true
+    crop: false
+    filetype: "SVG (e.g. MyIcon.svg) files would be best here, with a transparent background. It is reccomended to use square icons no bigger than 70px."

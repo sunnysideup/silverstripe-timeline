@@ -1,6 +1,6 @@
 <?php
 
-namespace Sunnysideup\Timeline\Model;
+namespace Sunnysideup\Timeline\Model\CarouselItems\SubItems;
 
 use Sunnysideup\Timeline\Model\CarouselItems\GalleryCarouselItem;
 use SilverStripe\Assets\Image;
@@ -29,6 +29,16 @@ class CarouselGalleryImage extends DataObject
     private static $field_labels = [
         'Title' => 'Title',
     ];
+
+    private static $default_sort = [
+        'SortOrder' => 'ASC',
+    ];
+
+    private static $indexes = [
+        'SortOrder' => true,
+        'Title' => true,
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -45,6 +55,6 @@ class CarouselGalleryImage extends DataObject
     }
     public function forTemplate()
     {
-        return $this->renderWith('Sunnysideup/Timeline/Model/CarouselGalleryImage');
+        return $this->renderWith('Sunnysideup/Timeline/Model/CarouselItems/SubItems/CarouselGalleryImage');
     }
 }

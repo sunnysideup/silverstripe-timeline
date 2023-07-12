@@ -1,0 +1,13 @@
+---
+Name: 'timeline-routes'
+Before:
+  - '#adminroutes'
+---
+SilverStripe\Control\Director:
+  rules:
+    'flush-front-end//$Action/$ID/$OtherID/$Version': 'Sunnysideup\Timeline\Control\TimelineController'
+
+
+
+
+

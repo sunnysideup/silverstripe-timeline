@@ -3,7 +3,7 @@
 namespace Sunnysideup\Timeline\Model\CarouselItems;
 
 use Sunnysideup\Timeline\Model\CarouselItem;
-use Sunnysideup\Timeline\Model\CarouselGalleryImage;
+use Sunnysideup\Timeline\Model\CarouselItems\SubItems\CarouselGalleryImage;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\LiteralField;
@@ -31,7 +31,7 @@ class GalleryCarouselItem extends CarouselItem
         $gridField = GridField::create('GalleryImages', 'Gallery Images', $this->GalleryImages());
         $config = GridFieldConfig_RecordEditor::create();
         $gridField->setConfig($config);
-        $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+        // $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
         $fields->addFieldToTab(
             'Root.Main',
             TextField::create('Title', 'Title')

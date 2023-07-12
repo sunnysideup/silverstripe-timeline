@@ -13,8 +13,11 @@ use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 class CarouselRelatedDocument extends DataObject
 {
     private static $singular_name = 'Carousel Related Document';
+
     private static $plural_name = 'Carousel Related Documents';
+
     private static $table_name = 'CarouselRelatedDocument';
+
     private static $db = [
         'Title'=> 'Varchar(255)',
         'SortOrder' => 'Int',
@@ -32,6 +35,12 @@ class CarouselRelatedDocument extends DataObject
     private static $field_labels = [
         'Title' => 'Title',
     ];
+
+    private static $indexes = [
+        'SortOrder' => true,
+        'Title' => true,
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
@@ -49,6 +58,6 @@ class CarouselRelatedDocument extends DataObject
     }
     public function forTemplate()
     {
-        return $this->renderWith('Sunnysideup/Timeline/Model/CarouselRelatedDocument');
+        return $this->renderWith('Sunnysideup/Timeline/Model/CarouselItems/SubItems/CarouselRelatedDocument');
     }
 }

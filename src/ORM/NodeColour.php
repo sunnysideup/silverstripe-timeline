@@ -2,7 +2,6 @@
 
 namespace Sunnysideup\Timeline\Model\Fields;
 
-use Sunnysideup\Timeline\Forms\ColourSelector;
 use SilverStripe\Forms\DropdownField;
 use TractorCow\Colorpicker\Color;
 
@@ -28,7 +27,7 @@ class NodeColour extends Color
     ];
     public static function get_dropdown_field(?string $name = 'NodeColour', ?string $title = 'Node Colour'): DropdownField
     {
-        $field = ColourSelector::create(
+        $field = DropdownField::create(
             $name,
             $title,
             self::COLOURS

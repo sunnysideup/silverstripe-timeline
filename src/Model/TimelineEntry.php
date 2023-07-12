@@ -8,17 +8,14 @@ use Sunnysideup\Timeline\Model\CarouselItem;
 use Sunnysideup\Timeline\Model\Fields\NodeColour;
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
+use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
+use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
-use Sunnysideup\Timeline\Model\CarouselItems\BlogPostCarouselItem;
-use Sunnysideup\Timeline\Model\CarouselItems\GalleryCarouselItem;
-use Sunnysideup\Timeline\Model\CarouselItems\RelatedDocumentsCarouselItem;
-use Sunnysideup\Timeline\Model\CarouselItems\ImageCarouselItem;
-use Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
@@ -44,7 +41,7 @@ class TimelineEntry extends DataObject
     ];
 
     private static $has_one = [
-        'TimelineBlock' => TimelineBlock::class,
+        // 'TimelineBlock' => TimelineBlock::class,
         'ReadMoreLink' => Link::class,
     ];
 
@@ -69,7 +66,7 @@ class TimelineEntry extends DataObject
     //## Field Names and Presentation Section
     //######################
     private static $field_labels = [
-        'TimelineBlock' => 'Block',
+        // 'TimelineBlock' => 'Block',
         'DateDescription' => 'Date Title',
         'DateForOrdering' => 'Date for sort purposes',
         'Title' => 'Description',
@@ -79,7 +76,7 @@ class TimelineEntry extends DataObject
         'Title' => 'Title',
         'DateForOrdering.Nice' => 'Date',
         'DateDescription' => 'Date Description',
-        'TimelineBlock.Title' => 'Block',
+        // 'TimelineBlock.Title' => 'Block',
         'Position' => 'Entry Position'
     ];
 
@@ -100,20 +97,11 @@ class TimelineEntry extends DataObject
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $gridField = GridField::create('CarouselItems', 'Carousel Items', $this->CarouselItems());
-        $gridFieldAddNewMultiClass = new GridFieldAddNewMultiClass();
-        $subClasses = [
-            SummaryCarouselItem::class,
-            ImageCarouselItem::class,
-            GalleryCarouselItem::class,
-            BlogPostCarouselItem::class,
-            RelatedDocumentsCarouselItem::class,
-        ];
-        $config = GridFieldConfig_RecordEditor::create()
-            ->removeComponentsByType(GridFieldAddNewButton::class)
-            ->addComponent(GridFieldOrderableRows::create('SortOrder'))
-            ->addComponent($gridFieldAddNewMultiClass->setClasses($subClasses));
-        $gridField->setConfig($config);
+        $config = GridFieldConfig_RelationEditor::create();
+        $gridField = GridField::create('CarouselItems', 'Carousel Items', $this->CarouselItems(), $config);
+        // $gridFieldAddNewMultiClass = new GridFieldAddNewMultiClass();
+        // $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+        // ->addComponent($gridFieldAddNewMultiClass->setClasses($subClasses));
         $fields->addFieldsToTab(
             'Root.Main',
             [
@@ -130,13 +118,15 @@ class TimelineEntry extends DataObject
                 'CarouselNotice',
                 '<p><strong>Carousel items will be available once entry has been saved.</strong></p>'
             );
-            $fields->insertAfter(
-                'TimelineBlock',
-                Wrapper::create($carouselNotice)
-                ->displayIf('EntryType')
-                ->isEqualTo('Carousel')
-                ->end()
-            );
+            if(class_exists(TimelineBlock::class)) {
+                $fields->insertAfter(
+                    'TimelineBlock',
+                    Wrapper::create($carouselNotice)
+                    ->displayIf('EntryType')
+                    ->isEqualTo('Carousel')
+                    ->end()
+                );
+            }
         }
         return $fields;
     }
