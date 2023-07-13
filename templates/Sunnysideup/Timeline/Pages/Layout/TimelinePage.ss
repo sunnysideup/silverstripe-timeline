@@ -9,7 +9,5 @@
 </aside>
 
 <main>
-    <div class="restricted-width-container">
-        <% include Sunnysideup\Timeline\Model\TimelineBlock %>
-    </div>
+    <% include Sunnysideup\Timeline\Model\TimelineBlock %>
 </main>

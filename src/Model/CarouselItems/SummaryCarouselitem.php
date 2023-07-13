@@ -11,19 +11,25 @@ use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 class SummaryCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Summary Carousel Item';
+
+
     private static $plural_name = 'Summary Carousel Items';
+
     private static $table_name = 'SummaryCarouselItem';
+
     private static $db = [
-        'Title' => 'Varchar(255)',
         'Summary' => 'Text',
     ];
+
     private static $has_one = [
         'Icon' => Image::class,
         'MoreInformation' => Link::class,
     ];
+
     private static $owns = [
         'Icon',
     ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();

@@ -12,17 +12,19 @@ use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 class ImageCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Image Carousel Item';
+
     private static $plural_name = 'Image Carousel Items';
+
     private static $table_name = 'ImageCarouselItem';
-    private static $db = [
-        'Title' => 'Varchar(255)'
-    ];
+
     private static $has_one = [
         'Image' => Image::class,
     ];
+
     private static $owns = [
         'Image',
     ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();

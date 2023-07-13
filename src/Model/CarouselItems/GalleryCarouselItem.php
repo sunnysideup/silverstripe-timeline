@@ -14,17 +14,23 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 class GalleryCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Gallery Carousel Item';
+
     private static $plural_name = 'Gallery Carousel Items';
+
     private static $table_name = 'GalleryCarouselItem';
-    private static $db = [
-        'Title' => 'Varchar(255)'
-    ];
+
     private static $has_many = [
         'GalleryImages' => CarouselGalleryImage::class,
     ];
+
     private static $owns = [
         'GalleryImages',
     ];
+
+    private static $summary_fields = [
+        'GalleryImages.Count' => 'Gallery Images',
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();

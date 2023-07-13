@@ -6,12 +6,14 @@ use Sunnysideup\Timeline\Model\TimelineEntry;
 use SilverStripe\Admin\ModelAdmin;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
-use Sunnysideup\Timeline\Control\TimelinePage;
+use Sunnysideup\Timeline\Model\CarouselItem;
+use Sunnysideup\Timeline\Pages\TimelinePage;
 
 class TimelineAdmin extends ModelAdmin
 {
     private static $managed_models = [
         TimelineEntry::class,
+        CarouselItem::class,
     ];
 
 

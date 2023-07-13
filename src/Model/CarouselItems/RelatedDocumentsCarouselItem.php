@@ -12,14 +12,19 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 class RelatedDocumentsCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Related Documents Carousel Item';
+
     private static $plural_name = 'Related Documents Carousel Items';
+
     private static $table_name = 'RelatedDocumentsCarouselItem';
-    private static $db = [
-        'Title' => 'Varchar(255)'
-    ];
+
     private static $has_many = [
         'RelatedDocuments' => CarouselRelatedDocument::class,
     ];
+
+    private static $summary_fields = [
+        'RelatedDocuments.Count' => 'Number of Docs',
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();

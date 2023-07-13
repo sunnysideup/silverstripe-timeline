@@ -5,7 +5,7 @@ Before:
 ---
 SilverStripe\Control\Director:
   rules:
-    'timeline-full-list//$Action/$ID/$OtherID/$Version': 'Sunnysideup\Timeline\Control\TimelineController'
+    'timeline-full-list//$Action/$ID/$OtherID/$Version': 'Sunnysideup\Timeline\Pages\TimelinePageController'
 
 
 

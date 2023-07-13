@@ -8,14 +8,14 @@
                     <details class="timeline-entry__detail">
                         <summary class="timeline-entry__node timeline-entry__node--carousel"><span class="sr-only">Toggle Carousel</span></summary>
                         <div class="timeline-entry__detail-inner">
-                            <div class="container">
+                            <div class="restricted-width-container restricted-width-container">
                                 <div class="timeline-entry__date">
-                                    <time datetime="$DateForOrdering">$DateDescription</time>
+                                    <time datetime="$DateForOrdering">$Title</time>
                                 </div>
-                                <div class="timeline-entry__title">$Title</div>
-                            </div>
+                                <p class="timeline-entry__description">$Description</p>
+                            </p
                             <% if $CarouselItems %>
-                                <div class="timeline-entry__carousel">
+                                <div class="p-entry__carousel">
                                 <% loop $CarouselItems.Sort(SortOrder, ASC) %>
                                     $Me
                                 <% end_loop %>
@@ -30,13 +30,13 @@
                     <% if $EntryType == 'read-more' %>
                     <div class="timeline-entry__node"></div>
                     <% end_if %>
-                    <div class="container timeline-entry__wrapper">
+                    <div class="container restricted-width-container timeline-entry__wrapper">
                         <div class="timeline-entry__inner">
                             <div class="timeline-entry__date">
-                                <time datetime="$DateForOrdering">$DateDescription</time>
+                                <time datetime="$DateForOrdering">$Title</time>
                             </div>
-                            <div class="timeline-entry__title">$Title</div>
-                            <% if $EntryType == 'read-more' %>
+                            <p class="timeline-entry__description">$Description</p>
+                            <% if $ReadMoreLink %>
                                 $ReadMoreLink.setCSSClass('timeline-entry__read-more-link')
                             <% end_if %>
                         </div>

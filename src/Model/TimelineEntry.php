@@ -26,15 +26,17 @@ class TimelineEntry extends DataObject
     //## Names Section
     //######################
     private static $singular_name = 'Time Line Entry';
+
     private static $plural_name = 'Time Line Entries';
+
     private static $table_name = 'TimelineEntry';
     //######################
     //## Model Section
     //######################
     private static $db = [
-        'DateDescription' => 'Varchar',
-        'DateForOrdering' => 'Date',
         'Title' => 'Varchar',
+        'DateForOrdering' => 'Date',
+        'Description' => 'Text',
         'EntryType' => 'Enum("Read more, Carousel", "Carousel")',
         'Position' => 'Enum("Left, Right", "Right")',
         'NodeColour' => NodeColour::class,
@@ -67,15 +69,13 @@ class TimelineEntry extends DataObject
     //######################
     private static $field_labels = [
         // 'TimelineBlock' => 'Block',
-        'DateDescription' => 'Date Title',
+        'Title' => 'Date Title',
         'DateForOrdering' => 'Date for sort purposes',
-        'Title' => 'Description',
         'Position' => 'Entry Position'
     ];
     private static $summary_fields = [
-        'Title' => 'Title',
+        'Title' => 'Date Title',
         'DateForOrdering.Nice' => 'Date',
-        'DateDescription' => 'Date Description',
         // 'TimelineBlock.Title' => 'Block',
         'Position' => 'Entry Position'
     ];

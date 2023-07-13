@@ -20,11 +20,9 @@ class NodeColour extends Color
      * @var array<string, string>
      */
     public const COLOURS = [
-        '#00446B' => 'Dark Blue 100',
-        '#A5CE4F' => 'Green 100',
-        '#2BBCF2' => 'Light Blue 100',
-        '#3BC2BB' => 'Teal 100',
+        '#00446B' => 'Dark Blue',
     ];
+
     public static function get_dropdown_field(?string $name = 'NodeColour', ?string $title = 'Node Colour'): DropdownField
     {
         $field = DropdownField::create(
