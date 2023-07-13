@@ -2,11 +2,14 @@
 
 namespace Sunnysideup\Timeline\Model;
 
+use Sheadawson\Linkable\Forms\LinkField;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DropdownField;
 use Sunnysideup\Timeline\Model\TimelineEntry;
 use SilverStripe\ORM\DataObject;
+use Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem;
+use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
 
 class CarouselItem extends DataObject
 {
@@ -18,7 +21,8 @@ class CarouselItem extends DataObject
 
     private static $db = [
         'SortOrder' => 'Int',
-        'Title' => 'Varchar(255)'
+        'Title' => 'Varchar(255)',
+        'BackgroundColour' => TimelineBackgroundColour::class,
     ];
 
     private static $has_one = [
@@ -64,6 +68,13 @@ class CarouselItem extends DataObject
             $fields->replaceField('TimelineEntryID', $fields->dataFieldByName('TimelineEntryID')->performReadonlyTransformation());
             $fields->replaceField('ClassName', $fields->dataFieldByName('ClassName')->performReadonlyTransformation());
         }
+        $fields->addFieldsToTab(
+            'Root.Colour',
+            [
+                TimelineBackgroundColour::get_dropdown_field('BackgroundColour', 'Backgorund Colour'),
+                LinkField::create('ReadMoreLinkID', 'Read More Link'),
+            ]
+        );
 
         $fields->removeFieldFromTab('Root.Main', 'SortOrder');
         return $fields;
@@ -88,6 +99,14 @@ class CarouselItem extends DataObject
     {
         $list = $this->getAvailableTypes();
         return $list[$this->ClassName] ?? 'ERROR';
+    }
+
+    protected function onBeforeWrite()
+    {
+        parent::onBeforeWrite();
+        if ($this->ClassName === CarouselItem::class) {
+            $this->ClassName = SummaryCarouselItem::class;
+        }
     }
 
 }

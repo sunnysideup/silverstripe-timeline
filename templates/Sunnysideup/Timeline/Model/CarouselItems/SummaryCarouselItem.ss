@@ -1,4 +1,4 @@
-<div class="carousel__item carousel__item--summary">
+<div class="carousel__item carousel__item--summary" style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColor;">
     <% if $Icon %>
         <img
             src="$Icon.PerfectCmsImageLinkNonRetina('CarouselSummaryIcon')"
@@ -11,7 +11,7 @@
     <% if $Summary %>
         <p class="">$Summary</p>
     <% end_if %>
-    <% if $ProjectLink %>
-        $ProjectLink.setCSSClass('btn btn--white')
+    <% if $MoreInformation %>
+        $MoreInformation.setCSSClass('btn btn--white')
     <% end_if %>
 </div>

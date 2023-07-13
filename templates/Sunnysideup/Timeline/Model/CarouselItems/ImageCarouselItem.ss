@@ -1,4 +1,4 @@
-<div class="carousel__item carousel__item--image">
+<div class="carousel__item carousel__item--image" style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColor;">
     <% if $Image %>
         <img
             src="$Image.PerfectCmsImageLinkNonRetina('CarouselImageImage')"

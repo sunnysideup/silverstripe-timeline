@@ -5,7 +5,6 @@ namespace Sunnysideup\Timeline\Model;
 use Sunnysideup\Timeline\Admin\TimelineAdmin;
 use Sunnysideup\Timeline\Blocks\TimelineBlock;
 use Sunnysideup\Timeline\Model\CarouselItem;
-use Sunnysideup\Timeline\Model\Fields\NodeColour;
 use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Core\ClassInfo;
@@ -16,6 +15,7 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
+use Sunnysideup\Timeline\Model\Fields\TimelineNodeColour;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
@@ -39,7 +39,7 @@ class TimelineEntry extends DataObject
         'Description' => 'Text',
         'EntryType' => 'Enum("Read more, Carousel", "Carousel")',
         'Position' => 'Enum("Left, Right", "Right")',
-        'NodeColour' => NodeColour::class,
+        'NodeColour' => TimelineNodeColour::class,
     ];
 
     private static $has_one = [
@@ -105,7 +105,7 @@ class TimelineEntry extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                NodeColour::get_dropdown_field('NodeColour', 'Node Colour')->displayIf('EntryType')->isEqualTo('Carousel')->end(),
+                TimelineNodeColour::get_dropdown_field('NodeColour', 'Node Colour')->displayIf('EntryType')->isEqualTo('Carousel')->end(),
                 LinkField::create('ReadMoreLinkID', 'Read More Link')->hideUnless('EntryType')->isEqualTo('Read more')->end(),
             ]
         );

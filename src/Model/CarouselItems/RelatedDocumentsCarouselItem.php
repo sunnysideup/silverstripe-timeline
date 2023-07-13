@@ -11,37 +11,48 @@ use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
 class RelatedDocumentsCarouselItem extends CarouselItem
 {
-    private static $singular_name = 'Related Documents Carousel Item';
+    private static $singular_name = 'Related Documents / Links Carousel Item';
 
-    private static $plural_name = 'Related Documents Carousel Items';
+    private static $plural_name = 'Related Documents / Links Carousel Items';
 
     private static $table_name = 'RelatedDocumentsCarouselItem';
 
+    private static $db = [
+        'Style' => 'Enum("Documents, Links", "Documents")',
+    ];
+
     private static $has_many = [
-        'RelatedDocuments' => CarouselRelatedDocument::class,
+      'RelatedDocuments' => CarouselRelatedDocument::class,
     ];
 
     private static $summary_fields = [
         'RelatedDocuments.Count' => 'Number of Docs',
     ];
+    private static $casting = [
+        'StyleClass' => 'Varchar',
+    ];
 
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $gridField = GridField::create('RelatedDocuments', 'Related Document Links', $this->RelatedDocuments());
-        $config = GridFieldConfig_RecordEditor::create();
-        $gridField->setConfig($config);
-        $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
-        if ($this->exists()) {
-            $fields->addFieldsToTab('Root.Main', [
+        $gridField = $fields->fieldByName('RelatedDocuments');
+        if($gridField) {
+            $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+            $fields->addFieldsToTab('Root.RelatedDocuments', [
                 $gridField
             ]);
         } else {
-            $fields->addFieldToTab('Root.Main', LiteralField::create(
+            $fields->addFieldToTab('Root.RelatedDocuments', LiteralField::create(
                 'CarouselNotice',
                 '<p><strong>Related Documents will be available once item has been saved.</strong></p>'
             ));
         }
         return $fields;
     }
+
+    public function getStyleClass(): string
+    {
+        return strtolower((string) $this->Style);
+    }
+
 }

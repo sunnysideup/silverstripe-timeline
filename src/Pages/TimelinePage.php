@@ -3,6 +3,7 @@
 namespace Sunnysideup\Timeline\Pages;
 
 use SilverStripe\CMS\Controllers\ContentController;
+use SilverStripe\Forms\FieldList;
 use Sunnysideup\Timeline\Model\TimelineEntry;
 use Page;
 use SilverStripe\Forms\GridField\GridField;

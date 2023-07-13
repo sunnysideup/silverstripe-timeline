@@ -1,8 +1,8 @@
-<div class="carousel__item carousel__item--related-documents">
+<div class="carousel__item carousel__item--related-documents $StyleClass" style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColor;">
     <% if $Title %><h2>$Title</h2><% end_if %>
     <% if $RelatedDocuments %>
-        <% loop $RelatedDocuments.Sort(SortOrder, ASC) %>
-            $Me
-        <% end_loop %>
+    <ul>
+        <% loop $RelatedDocuments %>$Me<% end_loop %>
+    </ul>
     <% end_if %>
 </div>

@@ -5,5 +5,7 @@ After:
    - colorpicker-fieldtypes
 ---
 SilverStripe\Core\Injector\Injector:
-  NodeColour:
-    class: Sunnysideup\Timeline\Model\Fields\NodeColour
+  TimelineNodeColour:
+    class: Sunnysideup\Timeline\Model\Fields\TimelineNodeColour
+  TimelineBackgroundColour:
+    class: Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour

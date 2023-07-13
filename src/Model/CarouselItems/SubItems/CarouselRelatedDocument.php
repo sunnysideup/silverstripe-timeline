@@ -25,13 +25,12 @@ class CarouselRelatedDocument extends DataObject
     ];
     private static $has_one = [
         'RelatedDocumentsCarouselItem' => RelatedDocumentsCarouselItem::class,
-        'RelatedDocumentIcon' => Image::class,
         'RelatedDocumentLink' => Link::class,
     ];
     private static $owns = [
-        'RelatedDocumentIcon',
         'RelatedDocumentLink',
     ];
+
     private static $field_labels = [
         'Title' => 'Title',
     ];
@@ -41,13 +40,16 @@ class CarouselRelatedDocument extends DataObject
         'Title' => true,
     ];
 
+    private static $casting = [
+        'StyleClass' => 'Varchar',
+    ];
+
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                PerfectCmsImagesUploadField::create('RelatedDocumentIcon', 'Related Document Icon', null, 'CarouselRelatedDocumentIcon'),
                 TextField::create('Title', 'Title')->setDescription('Internal use only - identifies this block for CMS users.'),
                 LinkField::create('RelatedDocumentLinkID', 'Related Document Link'),
                 TextField::create('Description', 'Description')->setDescription('Description of the related document.'),
@@ -60,4 +62,15 @@ class CarouselRelatedDocument extends DataObject
     {
         return $this->renderWith('Sunnysideup/Timeline/Model/CarouselItems/SubItems/CarouselRelatedDocument');
     }
+
+    public function getStyle(): string
+    {
+        return (string) $this->RelatedDocumentsCarouselItem()?->Style;
+    }
+
+    public function getStyleClass(): string
+    {
+        return strtolower((string) $this->getStyle());
+    }
+
 }
