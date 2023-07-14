@@ -16,7 +16,6 @@ $container-max-widths: (
 ) !default;
 
 $grid-columns: 12 !default;
-$grid-gutter-width: 30px !default;
 
 @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
   $min: map-get($breakpoints, $name);
