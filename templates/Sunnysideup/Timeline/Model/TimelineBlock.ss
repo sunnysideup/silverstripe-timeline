@@ -22,9 +22,10 @@
                         </summary>
                         <div class="timeline-entry__detail-inner">
 
-                            <a href="#Timeline-Toggle-$ID" data-toggle-for="Timeline-Toggle-$ID"><% include Sunnysideup/Timeline/Model/Includes/CloseSVG %></a>
 
                             <div class="restricted-width-container">
+                                <a href="#Timeline-Toggle-$ID" data-toggle-for="Timeline-Toggle-$ID"><% include Sunnysideup/Timeline/Model/Includes/CloseSVG %></a>
+
                                 <div class="timeline-entry__date">
                                     <time datetime="$DateForOrdering">$Title</time>
                                 </div>
