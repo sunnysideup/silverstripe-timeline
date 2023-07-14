@@ -1,0 +1,6 @@
+Sunnysideup\WebpackRequirementsBackend\View\RequirementsBackendForWebpack:
+  files_to_ignore:
+    - 'vendor/sunnysideup/timeline/client/dist/app.js'
+    - 'vendor/sunnysideup/timeline/client/dist/runtime.js'
+    - 'vendor/sunnysideup/timeline/client/dist/main.css'
+
