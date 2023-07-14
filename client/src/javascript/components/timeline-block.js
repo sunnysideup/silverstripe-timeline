@@ -1,17 +1,14 @@
 class TimelineBlock {
   constructor () {
     console.log('TimelineBlock');
+
+    // set basics
     this.timelineBlocks = document.querySelectorAll(
       '.timeline-block__entries'
     )
-    if (this.timelineBlocks.length) {
-      this.scrollToCurrentEntry()
-    }
-
     this.timeLineEntryDetails = document.querySelectorAll('.timeline-entry__detail')
-    if (this.timeLineEntryDetails.length) {
-      this.detailToggle()
-    }
+
+    // add toggles for carousels
 
     document.querySelectorAll('.timeline-block__entries').forEach(block => {
       console.log('found block');
@@ -29,6 +26,15 @@ class TimelineBlock {
         });
       });
     });
+
+    if (this.timeLineEntryDetails.length) {
+      this.detailToggle()
+    }
+
+    // scroll to today
+    if (this.timelineBlocks.length) {
+      this.scrollToCurrentEntry()
+    }
 
   }
 
