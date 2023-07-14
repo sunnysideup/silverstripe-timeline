@@ -13,11 +13,17 @@
                     >
 
                     <% if $HasCarouselItems %>
-                    <details class="timeline-entry__detail">
-                        <summary class="timeline-entry__node timeline-entry__node--carousel" style="background-color: $NodeColour" id="Timeline-Toggle-$ID">
+                    <details class="timeline-entry__detail" id="Timeline-Toggle-$ID">
+                        <summary
+                            class="timeline-entry__node timeline-entry__node--carousel"
+                            style="background-color: $NodeColour"
+                        >
                             <span class="sr-only">$Title</span>
                         </summary>
                         <div class="timeline-entry__detail-inner">
+
+                            <a href="#Timeline-Toggle-$ID" data-toggle-for="Timeline-Toggle-$ID"><% include Sunnysideup/Timeline/Model/Includes/CloseSVG %></a>
+
                             <div class="restricted-width-container">
                                 <div class="timeline-entry__date">
                                     <time datetime="$DateForOrdering">$Title</time>
@@ -48,8 +54,9 @@
                             <p class="timeline-entry__description">$Description</p>
                             <% if $ReadMoreLink %>
                                 $ReadMoreLink.setCSSClass('timeline-entry__read-more-link')
-                            <% else %>
-                                <a href="#" class="timeline-entry__show-carousel" data-toggle-for="Timeline-Toggle-$ID">Read More</a>
+                            <% end_if %>
+                            <% if $HasCarouselItems %>
+                                <a href="#Timeline-Toggle-$ID" class="timeline-entry__show-carousel" data-toggle-for="Timeline-Toggle-$ID">Read More</a>
                             <% end_if %>
                         </div>
                     </div>

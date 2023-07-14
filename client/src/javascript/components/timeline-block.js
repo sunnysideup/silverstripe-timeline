@@ -1,5 +1,6 @@
 class TimelineBlock {
   constructor () {
+    console.log('TimelineBlock');
     this.timelineBlocks = document.querySelectorAll(
       '.timeline-block__entries'
     )
@@ -13,10 +14,18 @@ class TimelineBlock {
     }
 
     document.querySelectorAll('.timeline-block__entries').forEach(block => {
+      console.log('found block');
       block.querySelectorAll('[data-toggle-for]').forEach(element => {
-        element.addEventListener('click', () => {
-          let targetId = element.getAttribute('data-toggle-for');
-          document.getElementById(targetId)?.click();
+        element.classList.add('cursor-pointer');
+        element.addEventListener('click', (event) => {
+          console.log('click');
+          event.preventDefault();
+          const targetId = element.getAttribute('data-toggle-for');
+          const details = document.getElementById(targetId);
+          if(el) {
+            details.open = !details.open;
+          }
+          return false;
         });
       });
     });
