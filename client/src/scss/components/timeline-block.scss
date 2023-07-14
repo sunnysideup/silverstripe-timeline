@@ -1,6 +1,16 @@
 .element-holder__sunnysideup__timeline__blocks__timelineblock {
   overflow: hidden;
 }
+.timeline-block__wrapper,
+.timeline-block {
+  --grid-gutter-width: $grid-gutter-width;
+  --color-white: #fff;
+  --color-white: #fff;
+  --color-dark: #222;
+  --color-medium: #555;
+  --color-medium-light: #777;
+  --color-light: #ccc
+}
 .timeline-block__entries {
   display: flex;
   flex-direction: column;
@@ -146,7 +156,7 @@
   background-color: var(--color-white);
   border-radius: 50%;
   height: 36px;
-  left: calc(15px + 7px);
+  left: calc(( var(--grid-gutter-width) / 2 ) + 7);
   position: absolute;
   top: calc(50% - 18px);
   width: 36px;
@@ -182,7 +192,7 @@
     width: 70px;
   }
   .timeline-entry--green-100 & {
-    background-color: var(--color-medium2);
+    background-color: var(--color-medium-light);
   }
   .timeline-entry--light-blue-100 & {
     background-color: var(--color-light);
