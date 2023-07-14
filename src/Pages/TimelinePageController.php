@@ -21,8 +21,8 @@ class TimelinePageController extends PageController
     protected function init()
     {
         parent::init();
-        Requirements::javascript('sunnysideup/timeline: client/dist/runtime.js');
-        Requirements::javascript('sunnysideup/timeline: client/dist/app.js');
+        // Requirements::javascript('sunnysideup/timeline: client/dist/runtime.js');
+        // Requirements::javascript('sunnysideup/timeline: client/dist/app.js');
         Requirements::css('sunnysideup/timeline: client/dist/main.css');
     }
 
