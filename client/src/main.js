@@ -1,7 +1,5 @@
 import TimelineBlock from './javascript/components/timeline-block'
 
-const $window = $(window)
-const $document = $(document)
-$document.ready(() => {
+window.addEventListener('DOMContentLoaded', (event) => {
   new TimelineBlock()
 })
