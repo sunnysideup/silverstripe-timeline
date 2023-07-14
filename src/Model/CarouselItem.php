@@ -40,7 +40,7 @@ class CarouselItem extends DataObject
 
     private static $summary_fields = [
         'ClassNameNice' => 'Type',
-        'Title' => true,
+        'Title' => 'Title',
         'BackgroundColourNice' => 'Background Colour',
     ];
 

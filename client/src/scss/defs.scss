@@ -1,0 +1,15 @@
+.timeline-block__wrapper {
+  --grid-gutter-width: 30px;
+  --color-white: #fff;
+  --color-white: #fff;
+  --color-dark: #222;
+  --color-medium: #555;
+  --color-medium-light: #777;
+  --color-light: #ccc
+}
+
+.sr-only {
+  text-indent: -99999px;
+  display: block;
+  overflow: hidden;
+}

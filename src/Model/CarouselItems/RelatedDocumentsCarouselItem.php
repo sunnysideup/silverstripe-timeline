@@ -47,6 +47,7 @@ class RelatedDocumentsCarouselItem extends CarouselItem
                 '<p><strong>Related Documents will be available once item has been saved.</strong></p>'
             ));
         }
+        $fields->fieldByName('Root.RelatedDocuments')->setTitle($this->Style);
         return $fields;
     }
 
