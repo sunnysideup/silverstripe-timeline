@@ -61,7 +61,7 @@ class TimelineNodeColour extends Color
 
     public static function get_colours(): array
     {
-        return (array) Config::inst()->get(static::class, 'colours') ?: static::DEFAULT_COLOURS;
+        return (array) Config::inst()->get(static::class, 'colours', Config::UNINHERITED) ?: static::DEFAULT_COLOURS;
     }
 
 

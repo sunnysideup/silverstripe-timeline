@@ -2,6 +2,8 @@
 
 namespace Sunnysideup\Timeline\Model\CarouselItems;
 
+use Sheadawson\Linkable\Forms\LinkField;
+use Sheadawson\Linkable\Models\Link;
 use Sunnysideup\Timeline\Model\CarouselItem;
 use SilverStripe\Assets\Image;
 use SilverStripe\Forms\CompositeValidator;
@@ -25,10 +27,25 @@ class ImageCarouselItem extends CarouselItem
 
     private static $has_one = [
         'Image' => Image::class,
+        'MoreInformation' => Link::class,
     ];
 
     private static $owns = [
         'Image',
+        'MoreInformation',
+    ];
+
+    private static $cascade_deletes = [
+        'Image',
+        'MoreInformation',
+    ];
+
+    private static $summary_fields = [
+        'Type' => 'Type',
+    ];
+
+    private static $casting = [
+        'TypeClass' => 'Varchar',
     ];
 
     public function getCMSFields()
@@ -37,8 +54,8 @@ class ImageCarouselItem extends CarouselItem
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                TextField::create('Title', 'Title')->setDescription('Title is not displayed, only used for identification of the item in the CMS.'),
                 PerfectCmsImagesUploadField::create('Image', 'Carousel Image Image', null, 'CarouselImageImage'),
+                LinkField::create('MoreInformationID', 'More information link'),
             ]
         );
         return $fields;
@@ -49,4 +66,23 @@ class ImageCarouselItem extends CarouselItem
     //     $compositeValidator->addValidator(RequiredFields::create(['Image']));
     //     return $compositeValidator;
     // }
+    public function IsInset(): bool
+    {
+        return $this->Type === 'Inset';
+    }
+
+    public function IsBackground(): bool
+    {
+        return $this->Type === 'Background';
+    }
+
+    public function getTypeClass(): string
+    {
+        return strtolower((string)$this->Type);
+    }
+
+    public function HasTextContent(): bool
+    {
+        return (bool) $this->Title || $this->Description || $this->MoreInformationID;
+    }
 }

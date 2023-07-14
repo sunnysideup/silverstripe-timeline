@@ -41,11 +41,13 @@ class CarouselItem extends DataObject
     private static $summary_fields = [
         'ClassNameNice' => 'Type',
         'Title' => true,
+        'BackgroundColourNice' => 'Background Colour',
     ];
 
 
     private static $casting = [
         'ClassNameNice' => 'Varchar',
+        'BackgroundColourNice' => 'Varchar',
     ];
 
     public function getCMSFields()
@@ -111,6 +113,11 @@ class CarouselItem extends DataObject
         if ($this->ClassName === CarouselItem::class) {
             $this->ClassName = SummaryCarouselItem::class;
         }
+    }
+
+    public function getBackgroundColourNice(): string
+    {
+        return TimelineBackgroundColour::get_colours()[$this->BackgroundColour] ?? 'ERROR';
     }
 
 }

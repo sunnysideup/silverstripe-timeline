@@ -27,6 +27,9 @@
     "symbiote/silverstripe-gridfieldextensions": "3.x-dev",
     "tractorcow/silverstripe-colorpicker": "^4.2"
   },
+  "require-dev": {
+    "sunnysideup/sswebpack_engine_only": "dev-master"
+  },
   "autoload": {
     "psr-4": {
       "Sunnysideup\\Timeline\\": "src/"

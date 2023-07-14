@@ -29,6 +29,12 @@ class SummaryCarouselItem extends CarouselItem
 
     private static $owns = [
         'Icon',
+        'MoreInformation',
+    ];
+
+    private static $cascade_deletes = [
+        'Icon',
+        'MoreInformation',
     ];
 
     public function getCMSFields()

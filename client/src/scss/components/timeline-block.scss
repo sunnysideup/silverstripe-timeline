@@ -217,3 +217,11 @@
     margin: 45px calc( var(--grid-gutter-width) / 2);
   }
 }
+
+@include media-breakpoint-up(sm) {
+  .timeline-entry--left  {
+    .timeline-entry__node--carousel {
+      transform: rotate(180deg);
+    }
+  }
+}
