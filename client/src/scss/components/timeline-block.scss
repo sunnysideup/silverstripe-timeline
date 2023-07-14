@@ -93,7 +93,8 @@
   display: flex;
   justify-content: flex-end;
   margin-right: calc(var(--grid-gutter-width) / 2);
-  @include media-breakpoint-up(sm) {
+  // screen that does not swipe....
+  @media (pointer: fine) {
     display: none;
   }
   p {
