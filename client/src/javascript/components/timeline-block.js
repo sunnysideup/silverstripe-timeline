@@ -19,7 +19,7 @@ class TimelineBlock {
           event.preventDefault();
           const targetId = element.getAttribute('data-toggle-for');
           const details = document.getElementById(targetId);
-          if(el) {
+          if(details) {
             details.open = !details.open;
           }
           return false;
