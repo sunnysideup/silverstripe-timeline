@@ -29,12 +29,12 @@ class TimelineAdmin extends ModelAdmin
     public function getEditForm($id = null, $fields = null)
     {
         $form = parent::getEditForm($id, $fields);
-        $page = DataObject::get_one(TimelinePage::class);
+        $page = DataObject::get_one(TimelinePage::class, ['ShowAll' => true]);
         if($page) {
             $form->Fields()->push(
                 LiteralField::create(
                     'TimelineInfo',
-                    '<p>Use the <a href="">Timeline Full List</a> page to view the timeline.</p>'
+                    '<p>View a list of <a href="">All Entries</a>.</p>'
                 )
             );
         }

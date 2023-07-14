@@ -17,6 +17,7 @@ class SummaryCarouselItem extends CarouselItem
 
     private static $table_name = 'SummaryCarouselItem';
 
+    private static $has_icon = false;
     private static $db = [
         'Summary' => 'Text',
     ];
@@ -36,10 +37,19 @@ class SummaryCarouselItem extends CarouselItem
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                PerfectCmsImagesUploadField::create('Icon', 'Summary Icon', null, 'CarouselSummaryIcon'),
                 LinkField::create('MoreInformationID', 'More information link'),
             ]
         );
+        if($this->Config()->get('has_icon')) {
+            $fields->addFieldsToTab(
+                'Root.Main',
+                [
+                    PerfectCmsImagesUploadField::create('Icon', 'Summary Icon', null, 'CarouselSummaryIcon'),
+                ]
+            );
+        } else {
+            $fields->removeByName('Icon');
+        }
         return $fields;
     }
 }

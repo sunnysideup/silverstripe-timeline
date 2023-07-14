@@ -33,7 +33,6 @@
     }
   },
   "extra": {
-    "installer-name": "sortablegridfield",
     "expose": [
       "client/dist"
     ]

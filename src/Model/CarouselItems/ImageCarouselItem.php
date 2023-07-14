@@ -17,6 +17,12 @@ class ImageCarouselItem extends CarouselItem
 
     private static $table_name = 'ImageCarouselItem';
 
+    private static $db = [
+        'Title' => 'Varchar(255)',
+        'Description' => 'Varchar(255)',
+        'Type' => 'Enum("Inset, Background", "Inset")'
+    ];
+
     private static $has_one = [
         'Image' => Image::class,
     ];

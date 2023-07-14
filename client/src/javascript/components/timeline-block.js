@@ -3,13 +3,24 @@ class TimelineBlock {
     this.timelineBlocks = document.querySelectorAll(
       '.timeline-block__entries'
     )
-    this.timeLineEntryDetails = document.querySelectorAll('.timeline-entry__detail')
     if (this.timelineBlocks.length) {
       this.scrollToCurrentEntry()
     }
+
+    this.timeLineEntryDetails = document.querySelectorAll('.timeline-entry__detail')
     if (this.timeLineEntryDetails.length) {
       this.detailToggle()
     }
+
+    document.querySelectorAll('.timeline-block__entries').forEach(block => {
+      block.querySelectorAll('[data-toggle-for]').forEach(element => {
+        element.addEventListener('click', () => {
+          let targetId = element.getAttribute('data-toggle-for');
+          document.getElementById(targetId)?.click();
+        });
+      });
+    });
+
   }
 
   scrollToCurrentEntry () {
@@ -28,5 +39,7 @@ class TimelineBlock {
       })
     })
   }
+
+
 }
 export default TimelineBlock

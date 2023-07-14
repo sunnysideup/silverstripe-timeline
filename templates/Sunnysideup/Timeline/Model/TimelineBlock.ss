@@ -3,10 +3,20 @@
         <div class="timeline-block">
             <div class="timeline-block__entries">
                 <% loop $TimelineEntries %>
-                <div class="timeline-entry timeline-entry--{$EntryPosition} timeline-entry--{$EntryType} timeline-entry--{$NodeColour} timeline-entry--{$EntryTense}">
-                    <% if $EntryType == 'carousel' %>
+                <div id="timeline-$ID"
+                    class="
+                        timeline-entry
+                        timeline-entry--<% if $IsAutoPosition %><% if $Even %>right<% else %>left<% end_if %><% else %>{$EntryPosition}<% end_if %>
+                        timeline-entry--{$EntryType}
+                        timeline-entry--{$NodeColour}
+                        timeline-entry--{$EntryTense}"
+                    >
+
+                    <% if $HasCarouselItems %>
                     <details class="timeline-entry__detail">
-                        <summary class="timeline-entry__node timeline-entry__node--carousel" style="background-color: $NodeColour"><span class="sr-only">Toggle Carousel</span></summary>
+                        <summary class="timeline-entry__node timeline-entry__node--carousel" style="background-color: $NodeColour" id="Timeline-Toggle-$ID">
+                            <span class="sr-only">$Title</span>
+                        </summary>
                         <div class="timeline-entry__detail-inner">
                             <div class="restricted-width-container">
                                 <div class="timeline-entry__date">
@@ -25,9 +35,8 @@
                             </div>
                         </div>
                     </details>
-                    <% end_if %>
 
-                    <% if $EntryType == 'read-more' %>
+                    <% else %>
                     <div class="timeline-entry__node"></div>
                     <% end_if %>
 
@@ -39,6 +48,8 @@
                             <p class="timeline-entry__description">$Description</p>
                             <% if $ReadMoreLink %>
                                 $ReadMoreLink.setCSSClass('timeline-entry__read-more-link')
+                            <% else %>
+                                <a href="#" class="timeline-entry__show-carousel" data-toggle-for="Timeline-Toggle-$ID">Read More</a>
                             <% end_if %>
                         </div>
                     </div>

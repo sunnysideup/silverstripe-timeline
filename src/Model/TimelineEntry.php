@@ -9,6 +9,7 @@ use Sheadawson\Linkable\Forms\LinkField;
 use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Core\ClassInfo;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\Forms\CheckboxSetField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldAddNewButton;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
@@ -16,6 +17,7 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RelationEditor;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\DataObject;
 use Sunnysideup\Timeline\Model\Fields\TimelineNodeColour;
+use Sunnysideup\Timeline\Pages\TimelinePage;
 use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
@@ -38,7 +40,7 @@ class TimelineEntry extends DataObject
         'DateForOrdering' => 'Date',
         'Description' => 'Text',
         'EntryType' => 'Enum("Read more, Carousel", "Carousel")',
-        'Position' => 'Enum("Left, Right", "Right")',
+        'Position' => 'Enum("Auto, Left, Right", "Auto")',
         'NodeColour' => TimelineNodeColour::class,
     ];
 
@@ -49,6 +51,10 @@ class TimelineEntry extends DataObject
 
     private static $has_many = [
         'CarouselItems' => CarouselItem::class,
+    ];
+
+    private static $belongs_many_many = [
+        'TimelinePages' => TimelinePage::class,
     ];
 
     //######################
@@ -76,7 +82,7 @@ class TimelineEntry extends DataObject
     private static $summary_fields = [
         'Title' => 'Date Title',
         'DateForOrdering.Nice' => 'Date',
-        // 'TimelineBlock.Title' => 'Block',
+        'EntryType' => 'Date Title',
         'Position' => 'Entry Position'
     ];
 
@@ -105,7 +111,7 @@ class TimelineEntry extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                TimelineNodeColour::get_dropdown_field('NodeColour', 'Node Colour')->displayIf('EntryType')->isEqualTo('Carousel')->end(),
+                TimelineNodeColour::get_dropdown_field('NodeColour', 'Node Colour'),
                 LinkField::create('ReadMoreLinkID', 'Read More Link')->hideUnless('EntryType')->isEqualTo('Read more')->end(),
             ]
         );
@@ -128,22 +134,42 @@ class TimelineEntry extends DataObject
                 );
             }
         }
+        $fields->addFieldsToTab(
+            'Root.TimelinePages',
+            [
+                CheckboxSetField::create(
+                    'TimelinePages',
+                    'Show on these pages',
+                    TimelinePage::get()->map('ID', 'Title')
+                ),
+            ]
+        );
+        $fields->fieldByName('Root.TimelinePages')->setTitle('Shown on');
         return $fields;
     }
-    public function NodeColour()
+    public function NodeColour(): string
     {
-        return str_replace(' ', '-', $this->dbObject('NodeColour')->CssClass());
+        return str_replace(' ', '-', (string) $this->dbObject('NodeColour')->CssClass());
     }
-    public function EntryPosition()
+    public function EntryPosition(): string
     {
-        return strtolower($this->dbObject('Position'));
+        return strtolower((string) $this->dbObject('Position'));
     }
-    public function EntryType()
+    public function EntryType(): string
     {
         return strtolower(str_replace(' ', '-', $this->dbObject('EntryType')));
     }
-    public function EntryTense()
+
+    public function HasCarouselItems(): bool
+    {
+        return $this->EntryType === 'Carousel' && $this->CarouselItems()->exists();
+    }
+    public function EntryTense(): string
     {
         return $this->dbObject('DateForOrdering') <= date('Y-m-d') ? 'past' : 'future';
+    }
+    public function IsAutoPosition(): bool
+    {
+        return $this->Position === 'Auto';
     }
 }

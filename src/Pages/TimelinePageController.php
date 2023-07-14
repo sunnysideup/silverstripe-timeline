@@ -18,11 +18,6 @@ class TimelinePageController extends PageController
         return [];
     }
 
-    public function TimelineEntries()
-    {
-        return TimelineEntry::get();
-    }
-
     protected function init()
     {
         parent::init();

@@ -90,7 +90,11 @@ class CarouselItem extends DataObject
         $array = [];
         $subClasses = ClassInfo::subclassesFor(CarouselItem::class, true);
         foreach ($subClasses as $key => $subClass) {
-            $array[$subClass] = Injector::inst()->get($subClass)->singular_name();
+            if(CarouselItem::class === $subClass) {
+                $array[$subClass] = '--- please select ---';
+            } else {
+                $array[$subClass] = Injector::inst()->get($subClass)->singular_name();
+            }
         }
         return $array;
     }
