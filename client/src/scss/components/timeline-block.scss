@@ -218,7 +218,7 @@
   }
 }
 
-@include media-breakpoint-up(sm) {
+@include media-breakpoint-up(xs) {
   .timeline-entry--left  {
     .timeline-entry__node--carousel {
       transform: rotate(180deg);
