@@ -73,7 +73,7 @@ class CarouselItem extends DataObject
         $fields->addFieldsToTab(
             'Root.Colour',
             [
-                TimelineBackgroundColour::get_dropdown_field('BackgroundColour', 'Backgorund Colour'),
+                TimelineBackgroundColour::get_dropdown_field('BackgroundColour', 'Background Colour'),
                 LinkField::create('ReadMoreLinkID', 'Read More Link'),
             ]
         );

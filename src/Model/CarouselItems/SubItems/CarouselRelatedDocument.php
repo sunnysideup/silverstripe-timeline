@@ -55,7 +55,6 @@ class CarouselRelatedDocument extends DataObject
                 TextField::create('Description', 'Description')->setDescription('Description of the related document.'),
             ]
         );
-        $fields->dataFieldByName('Title')->setReadonly(true);
         $fields->removeFieldFromTab('Root.Main', 'SortOrder');
         return $fields;
     }
