@@ -8,7 +8,7 @@
                         timeline-entry
                         timeline-entry--<% if $IsAutoPosition %><% if $Even %>right<% else %>left<% end_if %><% else %>{$EntryPosition}<% end_if %>
                         timeline-entry--{$EntryType}
-                        timeline-entry--{$NodeColour}
+                        timeline-entry--{$NodeColour.CSSClass}
                         timeline-entry--{$EntryTense}"
                     >
 

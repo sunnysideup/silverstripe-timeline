@@ -8,6 +8,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DropdownField;
 use Sunnysideup\Timeline\Model\TimelineEntry;
 use SilverStripe\ORM\DataObject;
+use Sunnysideup\SelectedColourPicker\Forms\SelectedColourPickerFormFieldDropdown;
 use Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem;
 use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
 
@@ -41,13 +42,12 @@ class CarouselItem extends DataObject
     private static $summary_fields = [
         'ClassNameNice' => 'Type',
         'Title' => 'Title',
-        'BackgroundColourNice' => 'Background Colour',
+        'BackgroundColour.Nice' => 'Background Colour',
     ];
 
 
     private static $casting = [
         'ClassNameNice' => 'Varchar',
-        'BackgroundColourNice' => 'Varchar',
     ];
 
     public function getCMSFields()
@@ -73,7 +73,7 @@ class CarouselItem extends DataObject
         $fields->addFieldsToTab(
             'Root.Colour',
             [
-                TimelineBackgroundColour::get_dropdown_field('BackgroundColour', 'Background Colour'),
+                SelectedColourPickerFormFieldDropdown::create('BackgroundColour', 'Background Colour'),
                 LinkField::create('ReadMoreLinkID', 'Read More Link'),
             ]
         );

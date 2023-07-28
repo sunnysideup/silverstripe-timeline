@@ -111,7 +111,7 @@ class TimelineEntry extends DataObject
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                TimelineNodeColour::get_dropdown_field('NodeColour', 'Node Colour'),
+                $fields->dataFieldByName('NodeColour'),
                 LinkField::create('ReadMoreLinkID', 'Read More Link')->hideUnless('EntryType')->isEqualTo('Read more')->end(),
             ]
         );
@@ -146,10 +146,6 @@ class TimelineEntry extends DataObject
         );
         $fields->fieldByName('Root.TimelinePages')->setTitle('Shown on');
         return $fields;
-    }
-    public function NodeColour(): string
-    {
-        return str_replace(' ', '-', (string) $this->dbObject('NodeColour')->CssClass());
     }
     public function EntryPosition(): string
     {
