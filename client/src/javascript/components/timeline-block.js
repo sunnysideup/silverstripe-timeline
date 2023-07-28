@@ -40,8 +40,8 @@ class TimelineBlock {
 
   scrollToCurrentEntry () {
     const pastEntries = this.timelineBlocks[0].querySelectorAll('.timeline-entry--past');
-    const futureEntries = this.timelineBlocks[0].querySelectorAll('.timeline-entry--past');
-    if (pastEntries.length && futureEntries.length) {
+    const futureEntries = this.timelineBlocks[0].querySelectorAll('.timeline-entry--future');
+    if (pastEntries && pastEntries.length && futureEntries && futureEntries.length) {
       const rect = pastEntries[0].getBoundingClientRect()
       const top = rect.top + document.body.scrollTop
       window.scrollTo(0, top)
