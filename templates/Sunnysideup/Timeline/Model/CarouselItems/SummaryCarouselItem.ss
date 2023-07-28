@@ -1,6 +1,6 @@
 <div
     class="carousel__item carousel__item--summary"
-    style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColour;"
+    style="background-color: $BackgroundColour; color:$BackgroundColour.ForeColour;"
 >
     <% if $Icon %>
         <img
