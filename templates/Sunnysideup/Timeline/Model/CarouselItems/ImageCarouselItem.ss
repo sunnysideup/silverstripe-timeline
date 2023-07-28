@@ -5,7 +5,7 @@
     "
     style="
         background-color: $BackgroundColour;
-        color:$BackgroundColour.ReadableColor;
+        color:$BackgroundColour.ReadableColour;
         <% if $IsBackground %><% if $Image %> background-image: url('$Image.URL');<% end_if %><% end_if %>
     "
 >
