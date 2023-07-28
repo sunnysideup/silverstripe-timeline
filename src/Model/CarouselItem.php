@@ -73,7 +73,7 @@ class CarouselItem extends DataObject
         $fields->addFieldsToTab(
             'Root.Colour',
             [
-                SelectedColourPickerFormFieldDropdown::create('BackgroundColour', 'Background Colour'),
+                $fields->dataFieldByName('BackgroundColour'),
                 LinkField::create('ReadMoreLinkID', 'Read More Link'),
             ]
         );
