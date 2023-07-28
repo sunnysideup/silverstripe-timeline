@@ -22,7 +22,7 @@ class ImageCarouselItem extends CarouselItem
     private static $db = [
         'Title' => 'Varchar(255)',
         'Description' => 'Varchar(255)',
-        'Type' => 'Enum("Inset, Background", "Inset")'
+        'Type' => 'Enum("Inset, Background", "Background")'
     ];
 
     private static $has_one = [
@@ -58,6 +58,7 @@ class ImageCarouselItem extends CarouselItem
                 LinkField::create('MoreInformationID', 'More information link'),
             ]
         );
+        $fields->removeByName('Inset');
         return $fields;
     }
     // public function getCMSCompositeValidator(): CompositeValidator
