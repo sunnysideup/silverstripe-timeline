@@ -1,4 +1,7 @@
-<div class="carousel__item carousel__item--related-documents $StyleClass" style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColor;">
+<div
+    class="carousel__item carousel__item--related-documents $StyleClass"
+    style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColor;"
+>
     <% if $Title %><h2>$Title</h2><% end_if %>
     <% if $RelatedDocuments %>
     <ul>

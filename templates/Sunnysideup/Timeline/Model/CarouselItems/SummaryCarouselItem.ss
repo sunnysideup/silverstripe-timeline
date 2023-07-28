@@ -1,4 +1,7 @@
-<div class="carousel__item carousel__item--summary" style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColor;">
+<div
+    class="carousel__item carousel__item--summary"
+    style="background-color: $BackgroundColour; color:$BackgroundColour.ReadableColour;"
+>
     <% if $Icon %>
         <img
             src="$Icon.PerfectCmsImageLinkNonRetina('CarouselSummaryIcon')"
