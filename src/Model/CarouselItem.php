@@ -115,9 +115,5 @@ class CarouselItem extends DataObject
         }
     }
 
-    public function getBackgroundColourNice(): string
-    {
-        return TimelineBackgroundColour::get_colours()[$this->BackgroundColour] ?? 'ERROR';
-    }
 
 }
