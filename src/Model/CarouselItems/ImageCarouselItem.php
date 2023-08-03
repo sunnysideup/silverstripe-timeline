@@ -58,7 +58,7 @@ class ImageCarouselItem extends CarouselItem
                 LinkField::create('MoreInformationID', 'More information link'),
             ]
         );
-        $fields->removeByName('Inset');
+        $fields->removeByName('Type');
         return $fields;
     }
     // public function getCMSCompositeValidator(): CompositeValidator
