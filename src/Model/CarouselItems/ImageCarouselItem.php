@@ -44,6 +44,10 @@ class ImageCarouselItem extends CarouselItem
         'Type' => 'Type',
     ];
 
+    private static $defaults = [
+        'Type' => 'Background',
+    ];
+
     private static $casting = [
         'TypeClass' => 'Varchar',
     ];
@@ -54,7 +58,7 @@ class ImageCarouselItem extends CarouselItem
         $fields->addFieldsToTab(
             'Root.Main',
             [
-                PerfectCmsImagesUploadField::create('Image', 'Carousel Image Image', null, 'CarouselImageImage'),
+                PerfectCmsImagesUploadField::create('Image', 'Image', null, 'CarouselImageImage'),
                 LinkField::create('MoreInformationID', 'More information link'),
             ]
         );
@@ -74,7 +78,7 @@ class ImageCarouselItem extends CarouselItem
 
     public function IsBackground(): bool
     {
-        return $this->Type === 'Background';
+        return ! $this->IsInset();
     }
 
     public function getTypeClass(): string

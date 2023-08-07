@@ -5,8 +5,8 @@
     "
     style="
         background-color: $BackgroundColour;
-        color: $BackgroundColour.ForeColour;
-        <% if $IsBackground %><% if $Image %> background-image: url('$Image.URL');<% end_if %><% end_if %>
+        color: $BackgroundColour.FontColour;
+        <% if $IsBackground %><% if $Image %> background-image: url('$Image.ScaleWidth(644).Link');<% end_if %><% end_if %>
     "
 >
     <% if $IsInset %><% if $Image %>

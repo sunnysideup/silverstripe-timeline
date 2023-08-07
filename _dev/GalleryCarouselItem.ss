@@ -2,7 +2,7 @@
     class="carousel__item carousel__item--gallery"
     style="
         background-color: $BackgroundColour;
-        color:$BackgroundColour.ForeColour;
+        color:$BackgroundColour.FontColour;
     "
 >
 <% if $GalleryImages %>

@@ -2,7 +2,7 @@
     class="carousel__item carousel__item--blog-post"
     style="
         background-color: $BackgroundColour;
-        color:$BackgroundColour.ForeColour;
+        color:$BackgroundColour.FontColour;
     "
 >
     <a href="{$BlogPost.Link}" {$BlogPost.Link.target}>
