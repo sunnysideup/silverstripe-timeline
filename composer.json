@@ -24,8 +24,8 @@
     "sunnysideup/selected-colour-picker": "dev-master",
     "sunnysideup/perfect_cms_images": "dev-master",
     "sheadawson/silverstripe-linkable": "*",
-    "unclecheese/display-logic": "^3.0",
-    "symbiote/silverstripe-gridfieldextensions": "3.x-dev"
+    "unclecheese/display-logic": "*",
+    "symbiote/silverstripe-gridfieldextensions": "*"
   },
   "require-dev": {
     "sunnysideup/sswebpack_engine_only": "dev-master"
