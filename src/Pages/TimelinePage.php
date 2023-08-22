@@ -11,6 +11,12 @@ use SilverStripe\Forms\CheckboxField;
 use SilverStripe\Forms\GridField\GridField;
 use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 
+/**
+ * Class \Sunnysideup\Timeline\Pages\TimelinePage
+ *
+ * @property bool $ShowAll
+ * @method ManyManyList|TimelineEntry[] TimelineEntries()
+ */
 class TimelinePage extends Page
 {
     private static $icon_class = 'font-icon-clock';

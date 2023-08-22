@@ -7,6 +7,13 @@ use Sunnysideup\Timeline\Model\TimelineEntry;
 use PageController;
 use SilverStripe\View\Requirements;
 
+/**
+ * Class \Sunnysideup\Timeline\Pages\TimelinePageController
+ *
+ * @property TimelinePage $dataRecord
+ * @method TimelinePage data()
+ * @mixin TimelinePage
+ */
 class TimelinePageController extends PageController
 {
     private static $allowed_actions = [

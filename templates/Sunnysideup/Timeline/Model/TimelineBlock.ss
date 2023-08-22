@@ -45,6 +45,11 @@
 
                     <% else %>
                     <div class="timeline-entry__node"></div>
+                    <style>
+                        #timeline-$ID .timeline-entry__node {
+                            background-color: $NodeColour;
+                        }
+                    </style>
                     <% end_if %>
 
                     <div class="container restricted-width-container timeline-entry__wrapper">
@@ -53,7 +58,7 @@
                                 <time datetime="$DateForOrdering">$Title</time>
                             </div>
                             <p class="timeline-entry__description">$Description</p>
-                            <% if $ReadMoreLink %>
+                            <% if $HasReadMoreLink %>
                                 $ReadMoreLink.setCSSClass('timeline-entry__read-more-link')
                             <% end_if %>
                             <% if $HasCarouselItems %>

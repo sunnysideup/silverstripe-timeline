@@ -11,6 +11,17 @@ use SilverStripe\Forms\RequiredFields;
 use SilverStripe\Forms\TextField;
 use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 
+/**
+ * Class \Sunnysideup\Timeline\Model\CarouselItems\ImageCarouselItem
+ *
+ * @property string $Title
+ * @property string $Description
+ * @property string $Type
+ * @property int $ImageID
+ * @property int $MoreInformationID
+ * @method Image Image()
+ * @method Link MoreInformation()
+ */
 class ImageCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Image Carousel Item';

@@ -9,6 +9,12 @@ use SilverStripe\Forms\GridField\GridFieldConfig_RecordEditor;
 use SilverStripe\Forms\LiteralField;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 
+/**
+ * Class \Sunnysideup\Timeline\Model\CarouselItems\RelatedDocumentsCarouselItem
+ *
+ * @property string $Style
+ * @method DataList|CarouselRelatedDocument[] RelatedDocuments()
+ */
 class RelatedDocumentsCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Related Documents / Links Carousel Item';

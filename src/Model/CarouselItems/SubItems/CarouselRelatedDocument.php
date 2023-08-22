@@ -10,6 +10,17 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\DataObject;
 use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 
+/**
+ * Class \Sunnysideup\Timeline\Model\CarouselItems\SubItems\CarouselRelatedDocument
+ *
+ * @property string $Title
+ * @property int $SortOrder
+ * @property string $Description
+ * @property int $RelatedDocumentsCarouselItemID
+ * @property int $RelatedDocumentLinkID
+ * @method RelatedDocumentsCarouselItem RelatedDocumentsCarouselItem()
+ * @method Link RelatedDocumentLink()
+ */
 class CarouselRelatedDocument extends DataObject
 {
     private static $singular_name = 'Carousel Related Document';

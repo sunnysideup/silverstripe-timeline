@@ -2,6 +2,7 @@
 
 namespace Sunnysideup\Timeline\Model;
 
+use SilverStripe\Forms\OptionsetField;
 use Sunnysideup\Timeline\Admin\TimelineAdmin;
 use Sunnysideup\Timeline\Blocks\TimelineBlock;
 use Sunnysideup\Timeline\Model\CarouselItem;
@@ -22,6 +23,20 @@ use Symbiote\GridFieldExtensions\GridFieldAddNewMultiClass;
 use Symbiote\GridFieldExtensions\GridFieldOrderableRows;
 use UncleCheese\DisplayLogic\Forms\Wrapper;
 
+/**
+ * Class \Sunnysideup\Timeline\Model\TimelineEntry
+ *
+ * @property string $Title
+ * @property string $DateForOrdering
+ * @property string $Description
+ * @property string $EntryType
+ * @property string $Position
+ * @property string $NodeColour
+ * @property int $ReadMoreLinkID
+ * @method Link ReadMoreLink()
+ * @method DataList|CarouselItem[] CarouselItems()
+ * @method ManyManyList|TimelinePage[] TimelinePages()
+ */
 class TimelineEntry extends DataObject
 {
     //######################
@@ -39,7 +54,7 @@ class TimelineEntry extends DataObject
         'Title' => 'Varchar',
         'DateForOrdering' => 'Date',
         'Description' => 'Text',
-        'EntryType' => 'Enum("Read more, Carousel", "Carousel")',
+        'EntryType' => 'Enum("Text Only, Text and Link, Carousel", "Carousel")',
         'Position' => 'Enum("Auto, Left, Right", "Auto")',
         'NodeColour' => TimelineNodeColour::class,
     ];
@@ -81,8 +96,8 @@ class TimelineEntry extends DataObject
     ];
     private static $summary_fields = [
         'Title' => 'Date Title',
-        'DateForOrdering.Nice' => 'Date',
-        'EntryType' => 'Date Title',
+        'DateForOrdering' => 'Date for Sorting',
+        'EntryType' => 'Type',
         'Position' => 'Entry Position'
     ];
 
@@ -108,11 +123,27 @@ class TimelineEntry extends DataObject
         // $gridFieldAddNewMultiClass = new GridFieldAddNewMultiClass();
         // $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
         // ->addComponent($gridFieldAddNewMultiClass->setClasses($subClasses));
+        $fields->replaceField(
+            'EntryType',
+            OptionsetField::create(
+                'EntryType',
+                'Type of Entry',
+                $fields->dataFieldByName('EntryType')->getSource()
+            )
+        );
+        $fields->replaceField(
+            'Position',
+            OptionsetField::create(
+                'Position',
+                'Position of marker',
+                $fields->dataFieldByName('Position')->getSource()
+            )
+        );
         $fields->addFieldsToTab(
             'Root.Main',
             [
                 $fields->dataFieldByName('NodeColour'),
-                LinkField::create('ReadMoreLinkID', 'Read More Link')->hideUnless('EntryType')->isEqualTo('Read more')->end(),
+                LinkField::create('ReadMoreLinkID', 'Read More Link')->displayUnless('EntryType')->isEqualTo('Text Only')->end(),
             ]
         );
         if ($this->exists()) {
@@ -159,6 +190,11 @@ class TimelineEntry extends DataObject
     public function HasCarouselItems(): bool
     {
         return $this->EntryType === 'Carousel' && $this->CarouselItems()->exists();
+    }
+
+    public function HasReadMoreLink(): bool
+    {
+        return $this->EntryType !== 'Text Only' && $this->ReadMoreLink()->exists();
     }
     public function EntryTense(): string
     {

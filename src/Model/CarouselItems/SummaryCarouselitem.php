@@ -8,6 +8,15 @@ use Sheadawson\Linkable\Models\Link;
 use SilverStripe\Assets\Image;
 use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 
+/**
+ * Class \Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem
+ *
+ * @property string $Summary
+ * @property int $IconID
+ * @property int $MoreInformationID
+ * @method Image Icon()
+ * @method Link MoreInformation()
+ */
 class SummaryCarouselItem extends CarouselItem
 {
     private static $singular_name = 'Summary Carousel Item';

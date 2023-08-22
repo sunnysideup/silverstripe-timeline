@@ -9,6 +9,10 @@ use SilverStripe\ORM\DataObject;
 use Sunnysideup\Timeline\Model\CarouselItem;
 use Sunnysideup\Timeline\Pages\TimelinePage;
 
+/**
+ * Class \Sunnysideup\Timeline\Admin\TimelineAdmin
+ *
+ */
 class TimelineAdmin extends ModelAdmin
 {
     private static $managed_models = [

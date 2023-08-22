@@ -12,6 +12,15 @@ use Sunnysideup\SelectedColourPicker\Forms\SelectedColourPickerFormFieldDropdown
 use Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem;
 use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
 
+/**
+ * Class \Sunnysideup\Timeline\Model\CarouselItem
+ *
+ * @property int $SortOrder
+ * @property string $Title
+ * @property string $BackgroundColour
+ * @property int $TimelineEntryID
+ * @method TimelineEntry TimelineEntry()
+ */
 class CarouselItem extends DataObject
 {
     private static $singular_name = 'Carousel Item';
