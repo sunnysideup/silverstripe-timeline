@@ -5,6 +5,7 @@ namespace Sunnysideup\Timeline\Pages;
 use SilverStripe\CMS\Controllers\ContentController;
 use Sunnysideup\Timeline\Model\TimelineEntry;
 use PageController;
+use SilverStripe\Control\Director;
 use SilverStripe\View\Requirements;
 
 /**
@@ -28,7 +29,9 @@ class TimelinePageController extends PageController
     protected function init()
     {
         parent::init();
-        // Requirements::javascript('sunnysideup/timeline: client/dist/runtime.js');
+        // if(Director::isDev()) {
+        //     Requirements::javascript('sunnysideup/timeline: client/dist/runtime.js');
+        // }
         // Requirements::javascript('sunnysideup/timeline: client/dist/app.js');
         Requirements::css('sunnysideup/timeline: client/dist/main.css');
     }
