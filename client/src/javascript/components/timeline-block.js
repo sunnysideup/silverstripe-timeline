@@ -1,31 +1,47 @@
 class TimelineBlock {
   constructor () {
-    console.log('TimelineBlock');
+    // console.log('TimelineBlock')
+
+    window.addEventListener('load', () => {
+      const entriesHeight = document.querySelector(
+        '.timeline-block__entries'
+      ).offsetHeight
+      const styleElement = document.createElement('style')
+
+      styleElement.innerHTML = `
+        .timeline-block .timeline-entry--past:before,
+        .timeline-block .timeline-entry--past:after {
+          height: ${entriesHeight}px;
+        }
+      `
+
+      document.head.appendChild(styleElement)
+    })
 
     // set basics
-    this.timelineBlocks = document.querySelectorAll(
-      '.timeline-block__entries'
+    this.timelineBlocks = document.querySelectorAll('.timeline-block__entries')
+    this.timeLineEntryDetails = document.querySelectorAll(
+      '.timeline-entry__detail'
     )
-    this.timeLineEntryDetails = document.querySelectorAll('.timeline-entry__detail')
 
     // add toggles for carousels
 
     document.querySelectorAll('.timeline-block__entries').forEach(block => {
-      console.log('found block');
+      // console.log('found block')
       block.querySelectorAll('[data-toggle-for]').forEach(element => {
-        element.classList.add('cursor-pointer');
-        element.addEventListener('click', (event) => {
-          console.log('click');
-          event.preventDefault();
-          const targetId = element.getAttribute('data-toggle-for');
-          const details = document.getElementById(targetId);
-          if(details) {
-            details.open = !details.open;
+        element.classList.add('cursor-pointer')
+        element.addEventListener('click', event => {
+          console.log('click')
+          event.preventDefault()
+          const targetId = element.getAttribute('data-toggle-for')
+          const details = document.getElementById(targetId)
+          if (details) {
+            details.open = !details.open
           }
-          return false;
-        });
-      });
-    });
+          return false
+        })
+      })
+    })
 
     if (this.timeLineEntryDetails.length) {
       this.detailToggle()
@@ -35,13 +51,21 @@ class TimelineBlock {
     if (this.timelineBlocks.length) {
       this.scrollToCurrentEntry()
     }
-
   }
 
   scrollToCurrentEntry () {
-    const pastEntries = this.timelineBlocks[0].querySelectorAll('.timeline-entry--past');
-    const futureEntries = this.timelineBlocks[0].querySelectorAll('.timeline-entry--future');
-    if (pastEntries && pastEntries.length && futureEntries && futureEntries.length) {
+    const pastEntries = this.timelineBlocks[0].querySelectorAll(
+      '.timeline-entry--past'
+    )
+    const futureEntries = this.timelineBlocks[0].querySelectorAll(
+      '.timeline-entry--future'
+    )
+    if (
+      pastEntries &&
+      pastEntries.length &&
+      futureEntries &&
+      futureEntries.length
+    ) {
       const rect = pastEntries[0].getBoundingClientRect()
       const top = rect.top + document.body.scrollTop
       window.scrollTo(0, top)
@@ -55,7 +79,5 @@ class TimelineBlock {
       })
     })
   }
-
-
 }
 export default TimelineBlock
