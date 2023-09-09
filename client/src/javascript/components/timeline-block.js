@@ -1,22 +1,22 @@
 class TimelineBlock {
   constructor () {
-    // console.log('TimelineBlock')
+    console.log('TimelineBlock')
 
-    window.addEventListener('load', () => {
-      const entriesHeight = document.querySelector(
-        '.timeline-block__entries'
-      ).offsetHeight
-      const styleElement = document.createElement('style')
+    const entriesHeight = document.querySelector(
+      '.timeline-block__entries'
+    ).offsetHeight
 
-      styleElement.innerHTML = `
-        .timeline-block .timeline-entry--past:before,
-        .timeline-block .timeline-entry--past:after {
-          height: ${entriesHeight}px;
-        }
-      `
+    console.log(entriesHeight)
 
-      document.head.appendChild(styleElement)
-    })
+    const styleElement = document.createElement('style')
+    styleElement.innerHTML = `
+    .timeline-entry--past:after,
+    .timeline-entry--past:before  {
+        height: ${entriesHeight}px!important;
+      }
+    `
+
+    document.head.appendChild(styleElement)
 
     // set basics
     this.timelineBlocks = document.querySelectorAll('.timeline-block__entries')
