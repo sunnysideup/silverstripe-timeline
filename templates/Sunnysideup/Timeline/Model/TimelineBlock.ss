@@ -24,7 +24,7 @@
 
 
                             <div class="restricted-width-container">
-                                <a href="#Timeline-Toggle-$ID" data-toggle-for="Timeline-Toggle-$ID"><% include Sunnysideup/Timeline/Model/Includes/CloseSVG %></a>
+                                <a href="#Timeline-Toggle-$ID" data-toggle-for="Timeline-Toggle-$ID" class="timeline-entry__open-close-button"><% include Sunnysideup/Timeline/Model/Includes/CloseSVG %></a>
 
                                 <div class="timeline-entry__date">
                                     <time datetime="$DateForOrdering">$Title</time>
