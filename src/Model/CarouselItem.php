@@ -86,7 +86,7 @@ class CarouselItem extends DataObject
              ]
         );
         $fields->removeByName('SortOrder');
-        foreach(array_keys($this->Config()->get('db')) as $fieldName) {
+        foreach(array_keys($this->Config()->get('db') + ['ClassName' => 'ClassName']) as $fieldName) {
             $tmpField = $fields->dataFieldByName($fieldName);
             if($tmpField) {
                 $description = $tmpField->getDescription();
@@ -152,6 +152,13 @@ class CarouselItem extends DataObject
                 'BackgroundColour',
                 $this->fieldLabel('BackgroundColour'),
                 $this->dbObject('BackgroundColour')->getColours()
+            );
+        }
+        if($fieldName === 'ClassName') {
+            return DropdownField::create(
+                'ClassName',
+                $this->fieldLabel('BackgroundColour'),
+                $this->getAvailableTypes()
             );
         }
         return null;
