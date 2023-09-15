@@ -8,6 +8,7 @@ use SilverStripe\Core\Injector\Injector;
 use SilverStripe\Forms\DropdownField;
 use Sunnysideup\Timeline\Model\TimelineEntry;
 use SilverStripe\ORM\DataObject;
+use Sunnysideup\DataObjectSorter\DataObjectOneFieldUpdateController;
 use Sunnysideup\SelectedColourPicker\Forms\SelectedColourPickerFormFieldDropdown;
 use Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem;
 use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
@@ -16,6 +17,7 @@ use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
  * Class \Sunnysideup\Timeline\Model\CarouselItem
  *
  * @property int $SortOrder
+ * @property string $Date
  * @property string $Title
  * @property string $BackgroundColour
  * @property int $TimelineEntryID
@@ -32,6 +34,7 @@ class CarouselItem extends DataObject
     private static $db = [
         'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
+        'Date' => 'Date',
         'BackgroundColour' => TimelineBackgroundColour::class,
     ];
 
@@ -39,18 +42,18 @@ class CarouselItem extends DataObject
         'TimelineEntry' => TimelineEntry::class,
     ];
 
-    private static $default_sort = [
-        'SortOrder' => 'ASC',
-    ];
+    private static $default_sort = 'SortOrder, Date';
 
     private static $indexes = [
         'SortOrder' => true,
+        'Date' => true,
         'Title' => true,
     ];
 
     private static $summary_fields = [
         'ClassNameNice' => 'Type',
         'Title' => 'Title',
+        'Date' => 'Date',
         'BackgroundColour.Nice' => 'Background Colour',
     ];
 
@@ -75,19 +78,36 @@ class CarouselItem extends DataObject
             'Title'
         );
 
-        if($this->exists()) {
-            $fields->replaceField('TimelineEntryID', $fields->dataFieldByName('TimelineEntryID')->performReadonlyTransformation());
-            $fields->replaceField('ClassName', $fields->dataFieldByName('ClassName')->performReadonlyTransformation());
-        }
         $fields->addFieldsToTab(
             'Root.Colour',
             [
-                $fields->dataFieldByName('BackgroundColour'),
-                LinkField::create('ReadMoreLinkID', 'Read More Link'),
-            ]
+                 $fields->dataFieldByName('BackgroundColour'),
+                 LinkField::create('ReadMoreLinkID', 'Read More Link'),
+             ]
         );
-
-        $fields->removeFieldFromTab('Root.Main', 'SortOrder');
+        $fields->removeByName('SortOrder');
+        foreach(array_keys($this->Config()->get('db')) as $fieldName) {
+            $tmpField = $fields->dataFieldByName($fieldName);
+            if($tmpField) {
+                $description = $tmpField->getDescription();
+                $fieldTitle = $this->fieldLabels()[$fieldName] ?? $fieldName;
+                $tmpField->setDescription(
+                    implode(
+                        '<br />',
+                        array_filter([
+                            $description,
+                            DataObjectOneFieldUpdateController::popup_link(
+                                static::class,
+                                $fieldName,
+                                'TimelineEntryID = ' . $this->TimelineEntryID,
+                                '',
+                                'Edit the \''.$fieldTitle.'\' field for all \''.$this->i18n_plural_name().'\' for \''.$this->TimelineEntry()->Title.'\''
+                            )
+                        ])
+                    )
+                );
+            }
+        }
         return $fields;
     }
 
@@ -122,6 +142,19 @@ class CarouselItem extends DataObject
         if ($this->ClassName === CarouselItem::class) {
             $this->ClassName = SummaryCarouselItem::class;
         }
+    }
+
+
+    public function getFrontEndField($fieldName = null)
+    {
+        if($fieldName === 'BackgroundColour') {
+            return DropdownField::create(
+                'BackgroundColour',
+                $this->fieldLabel('BackgroundColour'),
+                $this->dbObject('BackgroundColour')->getColours()
+            );
+        }
+        return null;
     }
 
 
