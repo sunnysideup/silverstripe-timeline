@@ -50,5 +50,8 @@
       "type": "vcs",
       "url": "https://github.com/sunnysideup/silverstripe-gridfieldextensions.git"
     }
-  ]
+  ],
+  "config": {
+    "sort-packages": true
+  }
 }
