@@ -21,7 +21,7 @@ class ItemFix extends BuildTask
                 ON "CarouselItem"."ID" = "ImageCarouselItem"."ID"
             SET "CarouselItem"."Summary" = "ImageCarouselItem"."Description"
             WHERE
-                ("CarouselItem"."Summary" IS NULL OR "CarouselItem"."Summary" = "")
+                ("CarouselItem"."Summary" IS NULL OR "CarouselItem"."Summary" = \'\')
                 AND
                 ("ImageCarouselItem"."Description" IS NOT NULL AND  "ImageCarouselItem"."Description" <> \'\');
         '
@@ -32,7 +32,7 @@ class ItemFix extends BuildTask
                 ON "CarouselItem"."ID" = "ImageCarouselItem"."ID"
             SET "CarouselItem"."Title" = "ImageCarouselItem"."Title"
             WHERE
-                ("CarouselItem"."Title" IS NULL OR "CarouselItem"."Title" = "")
+                ("CarouselItem"."Title" IS NULL OR "CarouselItem"."Title" = \'\')
                 AND
                 ("ImageCarouselItem"."Title" IS NOT NULL AND  "ImageCarouselItem"."Title" <> \'\');
         '
