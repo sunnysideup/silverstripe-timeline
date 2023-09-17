@@ -17,8 +17,9 @@ use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
  * Class \Sunnysideup\Timeline\Model\CarouselItem
  *
  * @property int $SortOrder
- * @property string $Date
  * @property string $Title
+ * @property string $Date
+ * @property string $Summary
  * @property string $BackgroundColour
  * @property int $TimelineEntryID
  * @method TimelineEntry TimelineEntry()

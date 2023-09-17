@@ -43,7 +43,7 @@ class ItemFix extends BuildTask
                 ON "CarouselItem"."ID" = "SummaryCarouselItem"."ID"
             SET "CarouselItem"."Summary" = "SummaryCarouselItem"."Summary"
             WHERE
-                ("CarouselItem"."Summary" IS NULL OR "CarouselItem"."Summary" = "")
+                ("CarouselItem"."Summary" IS NULL OR "CarouselItem"."Summary" = \'\')
                 AND
                 ("SummaryCarouselItem"."Summary" IS NOT NULL AND  "SummaryCarouselItem"."Summary" <> \'\');
         '
