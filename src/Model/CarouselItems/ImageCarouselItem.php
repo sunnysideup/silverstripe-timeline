@@ -14,8 +14,6 @@ use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 /**
  * Class \Sunnysideup\Timeline\Model\CarouselItems\ImageCarouselItem
  *
- * @property string $Title
- * @property string $Description
  * @property string $Type
  * @property int $ImageID
  * @property int $MoreInformationID
@@ -31,8 +29,6 @@ class ImageCarouselItem extends CarouselItem
     private static $table_name = 'ImageCarouselItem';
 
     private static $db = [
-        'Title' => 'Varchar(255)',
-        'Description' => 'Varchar(255)',
         'Type' => 'Enum("Inset, Background", "Background")'
     ];
 
@@ -99,6 +95,6 @@ class ImageCarouselItem extends CarouselItem
 
     public function HasTextContent(): bool
     {
-        return (bool) $this->Title || $this->Description || $this->MoreInformationID;
+        return (bool) $this->Title || $this->Summary || $this->MoreInformationID;
     }
 }

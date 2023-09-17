@@ -30,7 +30,7 @@ class CarouselRelatedDocument extends DataObject
     private static $table_name = 'CarouselRelatedDocument';
 
     private static $db = [
-        'Title'=> 'Varchar(255)',
+        'Title' => 'Varchar(255)',
         'SortOrder' => 'Int',
         'Description' => 'Varchar(255)',
     ];

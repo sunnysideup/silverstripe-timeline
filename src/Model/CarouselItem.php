@@ -35,6 +35,7 @@ class CarouselItem extends DataObject
         'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
         'Date' => 'Date',
+        'Summary' => 'Text',
         'BackgroundColour' => TimelineBackgroundColour::class,
     ];
 
