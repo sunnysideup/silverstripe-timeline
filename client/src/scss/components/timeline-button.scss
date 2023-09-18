@@ -25,7 +25,9 @@
 }
 
 @media print {
-    .timeline-buttons-holder {
-        display: none;
+    @include media-breakpoint-up(md) {
+        .timeline-buttons-holder {
+            display: none !important;
+        }
     }
 }
