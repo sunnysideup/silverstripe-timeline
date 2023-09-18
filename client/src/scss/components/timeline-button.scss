@@ -1,7 +1,5 @@
 .timeline-buttons-holder {
     display: none;
-    @media screen {
-
     @include media-breakpoint-up(md) {
         display: block;
         position: fixed;
