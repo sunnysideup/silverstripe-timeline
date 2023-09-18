@@ -27,5 +27,6 @@
 @media print {
     .timeline-buttons-holder {
         display: none !important;
+        visibility: hidden !important;
     }
 }
