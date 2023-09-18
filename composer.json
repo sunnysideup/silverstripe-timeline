@@ -25,7 +25,8 @@
     "sunnysideup/perfect_cms_images": "dev-master",
     "sheadawson/silverstripe-linkable": "*",
     "unclecheese/display-logic": "*",
-    "symbiote/silverstripe-gridfieldextensions": "*"
+    "symbiote/silverstripe-gridfieldextensions": "*",
+    "sunnysideup/dataobjectsorter": "dev-master"
   },
   "require-dev": {
     "sunnysideup/sswebpack_engine_only": "dev-master"
@@ -49,5 +50,8 @@
       "type": "vcs",
       "url": "https://github.com/sunnysideup/silverstripe-gridfieldextensions.git"
     }
-  ]
+  ],
+  "config": {
+    "sort-packages": true
+  }
 }

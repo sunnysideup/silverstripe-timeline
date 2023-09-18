@@ -25,8 +25,8 @@
         <% if $MoreInformation %>
             $MoreInformation.setCSSClass('btn btn--right')
         <% end_if %>
-        <% if $Description %>
-            <p class="carousel__item__description">$Description</p>
+        <% if $Summary %>
+            <p class="carousel__item__description">$Summary</p>
         <% end_if %>
     </div>
     <% end_if %>

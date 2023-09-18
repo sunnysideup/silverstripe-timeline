@@ -11,7 +11,6 @@ use Sunnysideup\PerfectCmsImages\Forms\PerfectCmsImagesUploadField;
 /**
  * Class \Sunnysideup\Timeline\Model\CarouselItems\SummaryCarouselItem
  *
- * @property string $Summary
  * @property int $IconID
  * @property int $MoreInformationID
  * @method Image Icon()
@@ -28,7 +27,6 @@ class SummaryCarouselItem extends CarouselItem
 
     private static $has_icon = false;
     private static $db = [
-        'Summary' => 'Text',
     ];
 
     private static $has_one = [
