@@ -1,5 +1,9 @@
 <% if $TimelineEntries %>
     <div class="timeline-block__wrapper">
+        <div class="timeline-buttons-holder">
+            <a href="#" class="timeline-print-btn" onclick="window.print();">Print Timeline ›</a>
+        </div>
+
         <div class="timeline-block">
             <div class="timeline-block__entries">
                 <% loop $TimelineEntries %>
