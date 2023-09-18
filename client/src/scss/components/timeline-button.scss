@@ -1,0 +1,23 @@
+.timeline-print-btn {
+    max-width: 190px;
+    border-radius: 5px;
+    padding: 10px 20px;
+
+    background-color: #172244;
+    &:hover {
+        background-color: #4F77C6;
+    }
+
+    color: white!important;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.timeline-buttons-holder {
+    padding: 20px;
+    margin: auto;
+    max-width: 1370px;
+    
+    display: flex;
+    justify-content: end;
+}
