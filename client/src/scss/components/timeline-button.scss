@@ -1,12 +1,11 @@
 .timeline-buttons-holder {
     display: none;
-    @include media-breakpoint-up(md) {
+    @include media-breakpoint-up(lg) {
         display: block;
         position: fixed;
         z-index: 9999;
-        top: 0;
-        right: 0;
-        padding: 20px;
+        top: 20px;
+        right: 20px;
         .timeline-print-btn {
             max-width: 190px;
             border-radius: 5px;
