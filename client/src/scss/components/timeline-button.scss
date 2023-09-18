@@ -1,6 +1,6 @@
 .timeline-buttons-holder {
     display: none;
-    @include media-breakpoint-up(lg) {
+    @include media-breakpoint-up(md) {
         display: block;
         position: fixed;
         z-index: 9999;
