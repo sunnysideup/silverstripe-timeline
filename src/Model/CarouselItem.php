@@ -42,7 +42,7 @@ class CarouselItem extends DataObject
         'TimelineEntry' => TimelineEntry::class,
     ];
 
-    private static $default_sort = 'Date';
+    private static $default_sort = 'Date DESC';
 
     private static $indexes = [
         'Date' => true,
