@@ -34,10 +34,10 @@ class GalleryCarouselItem extends CarouselItem
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $gridField = GridField::create('GalleryImages', 'Gallery Images', $this->GalleryImages());
-        $config = GridFieldConfig_RecordEditor::create();
-        $gridField->setConfig($config);
-        $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+        $gridField = $fields->fieldByName('GalleryImages');
+        if($gridField) {
+            $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+        }
         $fields->addFieldToTab(
             'Root.Main',
             TextField::create('Title', 'Title')
