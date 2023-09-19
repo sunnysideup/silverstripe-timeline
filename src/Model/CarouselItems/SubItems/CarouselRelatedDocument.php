@@ -51,6 +51,10 @@ class CarouselRelatedDocument extends DataObject
         'Title' => true,
     ];
 
+    private static $default_sort = [
+        'SortOrder' => 'ASC',
+    ];
+
     private static $casting = [
         'StyleClass' => 'Varchar',
     ];

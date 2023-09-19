@@ -14,7 +14,7 @@ class CarouselGalleryImage extends DataObject
     private static $plural_name = 'Carousel Gallery Images';
     private static $table_name = 'CarouselGalleryImage';
     private static $db = [
-        'Title'=> 'Varchar(255)',
+        'Title' => 'Varchar(255)',
         'SortOrder' => 'Int',
     ];
     private static $has_one = [
@@ -30,13 +30,13 @@ class CarouselGalleryImage extends DataObject
         'Title' => 'Title',
     ];
 
-    private static $default_sort = [
-        'SortOrder' => 'ASC',
-    ];
-
     private static $indexes = [
         'SortOrder' => true,
         'Title' => true,
+    ];
+
+    private static $default_sort = [
+        'SortOrder' => 'ASC',
     ];
 
     public function getCMSFields()

@@ -37,7 +37,7 @@ class GalleryCarouselItem extends CarouselItem
         $gridField = GridField::create('GalleryImages', 'Gallery Images', $this->GalleryImages());
         $config = GridFieldConfig_RecordEditor::create();
         $gridField->setConfig($config);
-        // $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+        $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
         $fields->addFieldToTab(
             'Root.Main',
             TextField::create('Title', 'Title')

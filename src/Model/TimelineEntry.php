@@ -121,7 +121,7 @@ class TimelineEntry extends DataObject
         $config = GridFieldConfig_RelationEditor::create(99999);
         $gridField = GridField::create('CarouselItems', 'Carousel Items', $this->CarouselItems(), $config);
         // $gridFieldAddNewMultiClass = new GridFieldAddNewMultiClass();
-        $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
+        // $gridField->getConfig()->addComponent(GridFieldOrderableRows::create('SortOrder'));
         // ->addComponent($gridFieldAddNewMultiClass->setClasses($subClasses));
         $fields->replaceField(
             'EntryType',

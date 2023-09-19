@@ -36,7 +36,7 @@
                                 <p class="timeline-entry__description">$Description</p>
                                 <% if $CarouselItems %>
                                 <div class="timeline-entry__carousel">
-                                    <% loop $CarouselItems.Sort(SortOrder, ASC) %>$Me<% end_loop %>
+                                    <% loop $CarouselItems %>$Me<% end_loop %>
                                 </div>
 
                                 <div class="timeline-entry__swipe">

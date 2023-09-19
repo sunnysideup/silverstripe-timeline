@@ -16,9 +16,8 @@ use Sunnysideup\Timeline\Model\Fields\TimelineBackgroundColour;
 /**
  * Class \Sunnysideup\Timeline\Model\CarouselItem
  *
- * @property int $SortOrder
  * @property string $Title
- * @property string $Date
+ * @property Date $Date
  * @property string $Summary
  * @property string $BackgroundColour
  * @property int $TimelineEntryID
@@ -33,7 +32,6 @@ class CarouselItem extends DataObject
     private static $table_name = 'CarouselItem';
 
     private static $db = [
-        'SortOrder' => 'Int',
         'Title' => 'Varchar(255)',
         'Date' => 'Date',
         'Summary' => 'Text',
@@ -44,10 +42,9 @@ class CarouselItem extends DataObject
         'TimelineEntry' => TimelineEntry::class,
     ];
 
-    private static $default_sort = 'Date, SortOrder';
+    private static $default_sort = 'Date';
 
     private static $indexes = [
-        'SortOrder' => true,
         'Date' => true,
         'Title' => true,
     ];
@@ -87,7 +84,6 @@ class CarouselItem extends DataObject
                  LinkField::create('ReadMoreLinkID', 'Read More Link'),
              ]
         );
-        $fields->removeByName('SortOrder');
         foreach(array_keys($this->Config()->get('db') + ['ClassName' => 'ClassName']) as $fieldName) {
             $tmpField = $fields->dataFieldByName($fieldName);
             if($tmpField) {
