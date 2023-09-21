@@ -1,32 +1,39 @@
 .timeline-buttons-holder {
-    display: none;
-    @include media-breakpoint-up(md) {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+    position: fixed;
+    z-index: 9999;
+    top: 0px;
+    right: 0px;
+    left: 0;
+    width: 100%;
+    .timeline-buttons-holder-inner {
+      padding: 10px;
+      max-width: 1370px;
+      box-sizing: border-box;
+      margin: 0 auto;
+      text-align: right;
+      .timeline-print-btn {
         display: block;
-        position: fixed;
-        z-index: 9999;
-        top: 0px;
-        right: 0px;
-        width: auto;
-        .timeline-print-btn {
-            display: block;
-            margin: 20px 20px 0 0;
-            max-width: 190px;
-            border-radius: 5px;
-            padding: 10px 20px;
-            background-color: #172244;
-            &:hover {
-                background-color: #4f77c6;
-            }
-            color: white !important;
-            text-decoration: none;
-            font-size: 20px;
+        max-width: 190px;
+        border-radius: 5px;
+        padding: 10px 20px;
+        background-color: #172244;
+        &:hover {
+          background-color: #4f77c6;
         }
+        color: white !important;
+        text-decoration: none;
+        font-size: 20px;
+      }
     }
+  }
 }
 
 @media print {
-    .timeline-buttons-holder {
-        display: none !important;
-        visibility: hidden !important;
-    }
+  .timeline-buttons-holder {
+    display: none !important;
+    visibility: hidden !important;
+  }
 }
