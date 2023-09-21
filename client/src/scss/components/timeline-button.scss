@@ -14,9 +14,12 @@
       max-width: 1370px;
       box-sizing: border-box;
       margin: 0 auto;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      justify-content: flex-end;
       .timeline-print-btn {
         display: block;
-        float: right;
         max-width: 190px;
         border-radius: 5px;
         padding: 10px 20px;
